@@ -98,7 +98,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>C:\Users\Vaschenko\AppData\Local\Temp\archetype1tmp/target/classes/source</outputDirectory>
+                            <outputDirectory>${basedir}/target/classes/source</outputDirectory>
                             <resources>          
                                 <resource>
                                     <directory>src/main/java</directory>

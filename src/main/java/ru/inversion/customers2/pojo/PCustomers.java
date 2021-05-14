@@ -4,15 +4,16 @@ import javafx.fxml.FXML;
 import ru.inversion.dataset.mark.IDMarkable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity(name = "ru.inversion.customers2.PCustomers")
 @Table(name = "customers")
 @NamedNativeQuery(name = "ru.inversion.customers2.PCustomers", query = "SELECT icusnum, ccusflag, ccusfirst_name, " +
         "ccusmiddle_name, ccuslast_name, ccusnumnal, ccussnils, dcusbirthday FROM cus")
-public class PCustomers extends IDMarkable {
+public class PCustomers extends IDMarkable implements Serializable {
 
-    private static final Long serialVerUID = 13_05_2021_15_12L;
+    private static final Long serialVersionUID = 13_05_2021_15_12L;
 
     @FXML
     private Long ICUSNUM;
@@ -36,37 +37,43 @@ public class PCustomers extends IDMarkable {
     public Long getICUSNUM() {
         return ICUSNUM;
     }
-@Column(name = "CCUSFLAG")
+
+    @Column(name = "CCUSFLAG")
     public String getCCUSFLAG() {
         return CCUSFLAG;
     }
-@Column(name = "CCUSFIRST_NAME")
+
+    @Column(name = "CCUSFIRST_NAME")
     public String getCCUSFIRST_NAME() {
         return CCUSFIRST_NAME;
     }
-@Column(name = "CCUSMIDDLE_NAME")
+
+    @Column(name = "CCUSMIDDLE_NAME")
     public String getCCUSMIDDLE_NAME() {
         return CCUSMIDDLE_NAME;
     }
-@Column(name = "CCUSLAST_NAME")
+
+    @Column(name = "CCUSLAST_NAME")
     public String getCCUSLAST_NAME() {
         return CCUSLAST_NAME;
     }
-@Column(name = "CCUSNUMNAL")
+
+    @Column(name = "CCUSNUMNAL")
     public Long getCCUSNUMNAL() {
         return CCUSNUMNAL;
     }
-@Column(name = "CCUSNUMNAL")
+
+    @Column(name = "CCUSNUMNAL")
     public String getCCUSSNILS() {
         return CCUSSNILS;
     }
-@Column(name = "DCUSBIRTHDA")
+
+    @Column(name = "DCUSBIRTHDA")
     public LocalDate getDCUSBIRTHDA() {
         return DCUSBIRTHDA;
     }
+
     // ================ Сеттеры
-
-
     public void setICUSNUM(Long ICUSNUM) {
         this.ICUSNUM = ICUSNUM;
     }
