@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+<?import ru.inversion.fx.form.controls.JInvTable?>
+<?import ru.inversion.fx.form.controls.JInvTableColumn?>
+<?import ru.inversion.fx.form.controls.JInvToolBar?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="1200.0" prefHeight="400.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.inversion.customers2.controller.CustomersController">
+   <children>
+      <JInvToolBar fx:id="toolBar" prefHeight="30.0" prefWidth="590.0">
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </JInvToolBar>
+      <JInvTable fx:id="customers" prefHeight="338.0" prefWidth="590.0" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <columns>
+            <JInvTableColumn fx:id="Clients" editable="false" fieldName="Clients" prefWidth="75.0" text="Клиент" transientColumn="false">
+               <columns>
+                  <JInvTableColumn fx:id="ICUSNUM" editable="false" fieldName="ICUSNUM" prefWidth="75.0" text="%icusnum" transientColumn="false" />
+                  <JInvTableColumn fx:id="ICUSNAME" editable="false" fieldName="ICUSNAME" prefWidth="75.0" text="%icusname" transientColumn="false" />
+                  <JInvTableColumn fx:id="ccusnumnal" editable="false" fieldName="CCUSNUMNAL" prefWidth="75.0" text="%ccusnumnal" transientColumn="false" />
+                  <JInvTableColumn fx:id="CCUSSNILS" editable="false" fieldName="CCUSSNILS" prefWidth="75.0" text="%ccussnils" transientColumn="false" />
+                  <JInvTableColumn fx:id="ph_numnum" editable="false" fieldName="PH_NUMNUM" prefWidth="75.0" text="%ph_numnum" transientColumn="false" />
+                  <JInvTableColumn fx:id="E_MAIL" editable="false" fieldName="E_MAIL" prefWidth="75.0" text="%e_mail" transientColumn="false" />
+               </columns>
+            </JInvTableColumn>
+            <JInvTableColumn fx:id="Documrnts" editable="false" fieldName="Documents" prefWidth="75.0" text="Документы" transientColumn="false">
+               <columns>
+                  <JInvTableColumn fx:id="ID_DOC" editable="false" fieldName="ID_DOC" prefWidth="75.0" text="%id_doc" transientColumn="false" />
+                  <JInvTableColumn fx:id="DOC" editable="false" fieldName="DOC" prefWidth="75.0" text="%doc" transientColumn="false" />
+                  <JInvTableColumn fx:id="DOC_DATE" editable="false" fieldName="DOC_DATE" prefWidth="75.0" text="%doc_date" transientColumn="false" />
+                  <JInvTableColumn fx:id="DOC_AGENCY" editable="false" fieldName="DOC_AGENCY" prefWidth="75.0" text="%doc_agency" transientColumn="false" />
+               </columns>
+            </JInvTableColumn>
+            <JInvTableColumn fx:id="ADDR" editable="false" fieldName="ADDR" prefWidth="75.0" text="Адрес" transientColumn="false">
+               <columns>
+                  <JInvTableColumn fx:id="COUNTRY" editable="false" fieldName="COUNTRY" prefWidth="75.0" text="%country" transientColumn="false" />
+                  <JInvTableColumn fx:id="POST_INDEX" editable="false" fieldName="POST_INDEX" prefWidth="75.0" text="%post_index" transientColumn="false" />
+                  <JInvTableColumn fx:id="ADDRESS" editable="false" fieldName="Address" prefWidth="75.0" text="%address" transientColumn="false" />
+               </columns>
+            </JInvTableColumn>
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </JInvTable>
+   </children>
+</VBox>

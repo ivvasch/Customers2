@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+<?import ru.inversion.fx.form.controls.JInvTable?>
+<?import ru.inversion.fx.form.controls.JInvTableColumn?>
+<?import ru.inversion.fx.form.controls.JInvToolBar?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.inversion.customers2.controller.CustomersController">
+   <children>
+      <JInvToolBar fx:id="toolBar" prefHeight="30.0" prefWidth="590.0">
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </JInvToolBar>
+      <JInvTable fx:id="customers" prefHeight="338.0" prefWidth="590.0" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <columns>
+            <JInvTableColumn fx:id="ICUSNUM" editable="false" fieldName="ICUSNUM" prefWidth="75.0" text="%icusnum" transientColumn="false" />
+            <JInvTableColumn fx:id="CCUSFLAG" editable="false" fieldName="CCUSFLAG" prefWidth="75.0" text="%ccusflag" transientColumn="false" />
+            <JInvTableColumn fx:id="CCUSFIRST_NAME" editable="false" fieldName="CCUSFIRST_NAME" prefWidth="75.0" text="%ccusfirst_name" transientColumn="false" />
+            <JInvTableColumn fx:id="CCUSMIDDLE_NAME" editable="false" fieldName="CCUSMIDDLE_NAME" prefWidth="75.0" text="%ccusmiddle_name" transientColumn="false" />
+            <JInvTableColumn fx:id="CCUSLAST_NAME" editable="false" fieldName="CCUSLAST_NAME" prefWidth="75.0" text="%ccuslast_name" transientColumn="false" />
+            <JInvTableColumn fx:id="CCUSNUMNAL" editable="false" fieldName="CCUSNUMNAL" prefWidth="75.0" text="%ccusnumnal" transientColumn="false" />
+            <JInvTableColumn fx:id="CCUSSNILS" editable="false" fieldName="CCUSSNILS" prefWidth="75.0" text="%ccussnils" transientColumn="false" />
+            <JInvTableColumn fx:id="DCUSBIRTHDAY" editable="false" fieldName="DCUSBIRTHDAY" prefWidth="75.0" text="%dcusbirthday" transientColumn="false" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </JInvTable>
+   </children>
+</VBox>
