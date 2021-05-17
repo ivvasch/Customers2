@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import jfxtras.scene.control.LocalDateTextField;
+import ru.inversion.customers2.pojo.PCus_Addr;
 import ru.inversion.customers2.pojo.PCustomers;
 import ru.inversion.fx.form.JInvFXFormController;
 import ru.inversion.fx.form.controls.JInvLongField;

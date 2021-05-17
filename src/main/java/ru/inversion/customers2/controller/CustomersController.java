@@ -1,139 +1,57 @@
 package ru.inversion.customers2.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import ru.inversion.customers2.App;
-import ru.inversion.customers2.pojo.PCustomers;
-import ru.inversion.dataset.IDataSet;
-import ru.inversion.dataset.XXIDataSet;
-import ru.inversion.dataset.fx.DSFXAdapter;
-import ru.inversion.fx.form.*;
-import ru.inversion.fx.form.controls.JInvTable;
-import ru.inversion.fx.form.controls.JInvToolBar;
-import ru.inversion.meta.EntityMetadataFactory;
-import ru.inversion.meta.IEntityProperty;
-
-import java.io.IOException;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import ru.inversion.fx.form.JInvFXBrowserController;
 
 public class CustomersController extends JInvFXBrowserController {
-
-    @FXML private JInvToolBar toolBar;
-    @FXML private JInvTable<PCustomers> customers;
-    private XXIDataSet<PCustomers> dsPcus = new XXIDataSet<>();
+    // окно вкладок
+    @FXML private TabPane tabPane;
+    // вкладки
+    @FXML private Tab tabCus;
+    @FXML private Tab tabCusDocum;
+    @FXML private Tab tabCussAddr;
+    @FXML private Tab tabCusContacts;
+    @FXML private Tab tabAllCus;
+    // контроллеры вкладок
+    @FXML private CUSController cusController;
+    @FXML private CUS_ADDRController cus_addrController;
+    @FXML private CUS_CONTACTSController cus_contactsController;
+    @FXML private CUS_DOCUMController cus_documController;
+    @FXML private ALL_CUSController all_cusController;
 
 
     @Override
     protected void init() throws Exception {
-        setTitle("Таблица Customers");
-        initDataSet();
-        DSFXAdapter<PCustomers> dsfx = DSFXAdapter.bind(dsPcus, customers, null, false);
-//        dsfx.setEnableFilter(true);
-        initToolBar();
-        doRefresh();
-        customers.setToolBar(toolBar);
-        customers.setAction(ActionFactory.ActionTypeEnum.CREATE, a -> doOperation(FormModeEnum.VM_INS));
-        customers.setAction(ActionFactory.ActionTypeEnum.CREATE_BY, a -> doOperation(FormModeEnum.VM_NONE));
-        customers.setAction(ActionFactory.ActionTypeEnum.VIEW, a -> doOperation(FormModeEnum.VM_SHOW));
-        customers.setAction(ActionFactory.ActionTypeEnum.UPDATE, a -> doOperation(FormModeEnum.VM_EDIT));
-        customers.setAction(ActionFactory.ActionTypeEnum.DELETE, a -> doOperation(FormModeEnum.VM_DEL));
-        customers.setAction(ActionFactory.ActionTypeEnum.REFRESH, a -> doRefresh());
-    }
+        super.init();
 
-    private void initDataSet() {
-        dsPcus.setTaskContext(getTaskContext());
-        dsPcus.setRowClass(PCustomers.class);
-    }
+        cusController.setViewContext(getViewContext());
+        cusController.setTaskContext(getTaskContext());
+        cusController.setTitle("Таблица CUS");
 
-    private void initToolBar() {
-        toolBar.setStandartActions(ActionFactory.ActionTypeEnum.CREATE,
-                ActionFactory.ActionTypeEnum.CREATE_BY,
-                ActionFactory.ActionTypeEnum.VIEW,
-                ActionFactory.ActionTypeEnum.UPDATE,
-                ActionFactory.ActionTypeEnum.DELETE,
-                ActionFactory.ActionTypeEnum.REFRESH);
-    }
+        cus_addrController.setViewContext(getViewContext());
+        cus_addrController.setTaskContext(getTaskContext());
+        cus_addrController.setTitle("Адреса клиентов");
 
-    private void doOperation(AbstractBaseController.FormModeEnum mode) {
-        PCustomers customers = null;
-        switch (mode) {
-            case VM_INS:
-                customers = new PCustomers();
-                break;
-            case VM_NONE:
-                if (dsPcus.getCurrentRow() == null)
-                    break;
-                    mode = FormModeEnum.VM_INS;
-                    customers = new PCustomers();
-                    for (IEntityProperty<PCustomers, ?> value : EntityMetadataFactory.getEntityMetaData(PCustomers.class)
-                            .getPropertiesMap().values()) {
-                        if (!(value.isTransient() || value.isId()))
-                            value.invokeSetter(customers, value.invokeGetter(dsPcus.getCurrentRow()));
-                        break;
-                    }
-            case VM_EDIT:
-            case VM_SHOW:
-            case VM_DEL:
-                customers = dsPcus.getCurrentRow();
-                break;
-        }
-        if (customers != null) {
-            new FXFormLauncher<>(this, EditCustomersController.class)
-                    .dataObject(customers)
-                    .dialogMode(mode)
-                    .initProperties(getInitProperties())
-                    .callback(this::doFormResult)
-                    .doModal();
+        cus_contactsController.setViewContext(getViewContext());
+        cus_contactsController.setTaskContext(getTaskContext());
+        cus_contactsController.setTitle("Контакты клиента");
 
-        }
+        cus_documController.setViewContext(getViewContext());
+        cus_documController.setTaskContext(getTaskContext());
+        cus_documController.setTitle("Документы клиента");
 
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(EditCustomersController.class.getResource("fxml/EditCustomers.fxml"));
-//
-//        Stage stage = new Stage();
-//        if (mode.equals("ins")) {
-//            PCustomers customers = new PCustomers();
-//            stage.setTitle("ins");
-//            stage.initModality(Modality.WINDOW_MODAL);
-//            stage.initOwner(getViewContext().getStageOrPrimaryStage());
-//            try {
-//                VBox vbox = loader.load();
-//                Scene scene = new Scene(vbox);
-//                stage.setScene(scene);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            EditCustomersController controller = loader.getController();
-//            controller.setDialogStage(stage);
-//            controller.setCustomers(customers);
-//        stage.showAndWait();
-//        }
+        all_cusController.setViewContext(getViewContext());
+        all_cusController.setTaskContext(getTaskContext());
+        all_cusController.setTitle("Общая информация по клиентам");
 
-    }
+        cusController.init();
+        cus_addrController.init();
+        cus_contactsController.init();
+        cus_documController.init();
+        all_cusController.init();
 
-    private void doFormResult(AbstractBaseController.FormReturnEnum ok, JInvFXFormController<PCustomers> dctl) {
-        if (FormReturnEnum.RET_OK == ok) {
-            switch (dctl.getFormMode()) {
-                case VM_INS:
-                    dsPcus.insertRow(dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
-                    break;
-                case VM_EDIT:
-                    dsPcus.updateCurrentRow(dctl.getDataObject());
-                    break;
-                case VM_DEL:
-                    dsPcus.removeCurrentRow();
-                    break;
-                default:
-                    break;
-            }
-        }
-        customers.requestFocus();
-    }
-
-    private void doRefresh() {
-        customers.executeQuery();
+        tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
     }
 }
