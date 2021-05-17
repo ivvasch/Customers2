@@ -15,22 +15,17 @@ public class PCustomers extends IDMarkable implements Serializable {
 
     private static final Long serialVersionUID = 13_05_2021_15_12L;
 
-    @FXML
-    private Long ICUSNUM;
-    @FXML
-    private String CCUSFLAG;
-    @FXML
-    private String CCUSFIRST_NAME;
-    @FXML
-    private String CCUSMIDDLE_NAME;
-    @FXML
-    private String CCUSLAST_NAME;
-    @FXML
-    private Long CCUSNUMNAL;
-    @FXML
-    private String CCUSSNILS;
-    @FXML
-    private LocalDate DCUSBIRTHDA;
+        private Long ICUSNUM;
+        private String CCUSFLAG;
+        private String CCUSFIRST_NAME;
+        private String CCUSMIDDLE_NAME;
+        private String CCUSLAST_NAME;
+        private Long CCUSNUMNAL;
+        private String CCUSSNILS;
+        private LocalDate DCUSBIRTHDAY;
+
+    public PCustomers() {
+    }
 
     @Id
     @Column(name = "ICUSNUM")
@@ -68,9 +63,9 @@ public class PCustomers extends IDMarkable implements Serializable {
         return CCUSSNILS;
     }
 
-    @Column(name = "DCUSBIRTHDA")
-    public LocalDate getDCUSBIRTHDA() {
-        return DCUSBIRTHDA;
+    @Column(name = "DCUSBIRTHDAY")
+    public LocalDate getDCUSBIRTHDAY() {
+        return DCUSBIRTHDAY;
     }
 
     // ================ Сеттеры
@@ -102,8 +97,8 @@ public class PCustomers extends IDMarkable implements Serializable {
         this.CCUSSNILS = CCUSSNILS;
     }
 
-    public void setDCUSBIRTHDA(LocalDate DCUSBIRTHDA) {
-        this.DCUSBIRTHDA = DCUSBIRTHDA;
+    public void setDCUSBIRTHDAY(LocalDate DCUSBIRTHDA) {
+        this.DCUSBIRTHDAY = DCUSBIRTHDA;
     }
 
     @Override
