@@ -8,20 +8,20 @@
    <children>
       <TabPane fx:id="tabPane" prefHeight="402.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
         <tabs>
-            <Tab fx:id="tabCus" text="CUS">
-                <fx:include maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUS.fxml" />
+            <Tab fx:id="cusTab" text="CUS">
+                <fx:include fx:id="cusTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUS.fxml" />
             </Tab>
-            <Tab fx:id="tabCusDocum" text="CUS_DOCUM">
-                <fx:include maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUS_DOCUM.fxml" />
+            <Tab fx:id="cusDocumTab" text="CUS_DOCUM">
+                <fx:include fx:id="cusDocumTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUS_DOCUM.fxml" />
             </Tab>
-            <Tab fx:id="tabCussAddr" text="CUS_ADDR">
-                <fx:include maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUS_ADDR.fxml" />
+            <Tab fx:id="cusAddrTab" text="CUS_ADDR">
+                <fx:include fx:id="cusAddrTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUS_ADDR.fxml" />
             </Tab>
-            <Tab fx:id="tabCusContacts" text="CUS_CONTACTS">
-                <fx:include maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUS_CONTACTS.fxml" />
+            <Tab fx:id="cusContactsTab" text="CUS_CONTACTS">
+                <fx:include fx:id="cusContactsTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUS_CONTACTS.fxml" />
             </Tab>
-            <Tab fx:id="tabAllCus" text="ALL_CUS">
-                <fx:include maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="ALL_CUS.fxml" />
+            <Tab fx:id="allCusTab" text="ALL_CUS">
+                <fx:include fx:id="allCusTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="ALL_CUS.fxml" />
             </Tab>
         </tabs>
       </TabPane>

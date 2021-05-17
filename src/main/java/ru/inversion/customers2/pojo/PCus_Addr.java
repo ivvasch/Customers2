@@ -8,24 +8,25 @@ import java.io.Serializable;
 
 @Entity(name = "ru.inversion.customers2.pojo.PCus_Addr")
 @Table(name = "cus_addr")
-@NamedNativeQuery(name = "ru.inversion.customers2.pojo.PCus_Addr", query = "SELECT ICUSNUM, ID_ADDR, ADDR_TYPE, COUNTRY, POST_INDEX, CITY, INFR_TYPE, " +
-        "INFR_NAME, DOM, KORP, KV FROM CUS_ADDR")
+@NamedNativeQuery(name = "ru.inversion.customers2.pojo.PCus_Addr", query = "SELECT icusnum, id_addr, addr_type, country, post_index, city, infr_type, " +
+        "infr_name, dom, korp, kv FROM cus_addr")
 public class PCus_Addr extends IDMarkable implements Serializable {
 
     private static final Long serialVersionUID = 17_05_2021_12_00L;
 
-    @FXML private Long ICUSNUM;
-    @FXML private Long ID_ADDR;
-    @FXML private Long ADDR_TYPE;
-    @FXML private String COUNTRY;
-    @FXML private String POST_INDEX;
-    @FXML private String CITY;
+    private Long ICUSNUM;
+    private Long ID_ADDR;
+    private Long ADDR_TYPE;
+    private String COUNTRY;
+    private String POST_INDEX;
+    private String CITY;
     private String INFR_TYPE;
     private String INFR_NAME;
     private String DOM;
     private String KORP;
     private String KV;
-    @FXML private String ADDRESS;
+    private String ADDRESS;
+    private String ADDRTYPE;
 
     public PCus_Addr() {
     }
@@ -38,11 +39,20 @@ public class PCus_Addr extends IDMarkable implements Serializable {
     public Long getID_ADDR() {
         return ID_ADDR;
     }
-@Column(name = "ADDR_TYPE")
+//    @Column(name = "ADDR_TYPE")
     public Long getADDR_TYPE() {
         return ADDR_TYPE;
     }
-@Column(name = "COUNTRY")
+    @Column(name = "ADDRTYPE")
+    public String getADDRTYPE() {
+        if(getADDR_TYPE() == 0)
+            return "Регистрации";
+        if (getADDR_TYPE()==1)
+            return "Почтовый";
+    return "Фактический";
+    }
+
+    @Column(name = "COUNTRY")
     public String getCOUNTRY() {
         return COUNTRY;
     }
@@ -76,11 +86,11 @@ public class PCus_Addr extends IDMarkable implements Serializable {
 @Column(name = "ADDRESS")
     public String getADDRESS() {
         return getINFR_NAME() == null ? "" : (
-                getINFR_TYPE() != null ? getINFR_TYPE() : "" + ". "
+                (getINFR_TYPE() != null ? getINFR_TYPE() : "") + ". "
                         + getINFR_NAME() + ", "
-                        + getDOM() != null ? getDOM() : "" + ", "
-                        + getKORP() != null ? getKORP() : "" + ". "
-                        + getKV() != null ? getKV() : "" + ".");
+                        + (getDOM() != null ? getDOM() : "") + ", "
+                        + (getKORP() != null ? getKORP() : "") + ". "
+                        + (getKV() != null ? getKV() : "") + ".");
     }
 
     // =================== Сеттеры
@@ -95,6 +105,10 @@ public class PCus_Addr extends IDMarkable implements Serializable {
 
     public void setADDR_TYPE(Long ADDR_TYPE) {
         this.ADDR_TYPE = ADDR_TYPE;
+    }
+
+    public void setADDRTYPE(String ADDRTYPE) {
+        this.ADDRTYPE = ADDRTYPE;
     }
 
     public void setCOUNTRY(String COUNTRY) {

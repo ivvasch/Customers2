@@ -2,7 +2,6 @@ package ru.inversion.customers2.controller;
 
 import javafx.fxml.FXML;
 import ru.inversion.customers2.pojo.PCus_Addr;
-import ru.inversion.customers2.pojo.PCustomers;
 import ru.inversion.dataset.IDataSet;
 import ru.inversion.dataset.XXIDataSet;
 import ru.inversion.dataset.fx.DSFXAdapter;
@@ -17,20 +16,20 @@ import ru.inversion.meta.IEntityProperty;
 
 public class CUS_ADDRController extends JInvFXBrowserController {
 
-    @FXML private JInvToolBar toolBar;
+    @FXML private JInvToolBar toolBarAddr;
     @FXML private JInvTable<PCus_Addr> cus_addr;
     private XXIDataSet<PCus_Addr> dsPcusAddr = new XXIDataSet<>();
 
 
     @Override
     protected void init() throws Exception {
-        setTitle("Таблица Customers");
+        setTitle("Таблица Cus_ADDR");
         initDataSet();
         DSFXAdapter<PCus_Addr> dsfx = DSFXAdapter.bind(dsPcusAddr, cus_addr, null, false);
 //        dsfx.setEnableFilter(true);
         initToolBar();
         doRefresh();
-        cus_addr.setToolBar(toolBar);
+        cus_addr.setToolBar(toolBarAddr);
         cus_addr.setAction(ActionFactory.ActionTypeEnum.CREATE, a -> doOperation(FormModeEnum.VM_INS));
         cus_addr.setAction(ActionFactory.ActionTypeEnum.CREATE_BY, a -> doOperation(FormModeEnum.VM_NONE));
         cus_addr.setAction(ActionFactory.ActionTypeEnum.VIEW, a -> doOperation(FormModeEnum.VM_SHOW));
@@ -45,7 +44,7 @@ public class CUS_ADDRController extends JInvFXBrowserController {
     }
 
     private void initToolBar() {
-        toolBar.setStandartActions(ActionFactory.ActionTypeEnum.CREATE,
+        toolBarAddr.setStandartActions(ActionFactory.ActionTypeEnum.CREATE,
                 ActionFactory.ActionTypeEnum.CREATE_BY,
                 ActionFactory.ActionTypeEnum.VIEW,
                 ActionFactory.ActionTypeEnum.UPDATE,
@@ -75,48 +74,15 @@ public class CUS_ADDRController extends JInvFXBrowserController {
                 break;
         }
         if (cus_addr != null) {
-            new FXFormLauncher<>(this, EditCustomersController.class)
+            new FXFormLauncher<>(this, EditCus_AddrController.class)
                     .dataObject(cus_addr)
                     .dialogMode(mode)
                     .callback(this::doFormResult)
                     .doModal();
         }
-//        PCus_Addr customers = null;
-//        switch (mode) {
-//            case VM_INS:
-//                customers = new PCus_Addr();
-//                break;
-//            case VM_NONE:
-//                if (dsPcusAddr.getCurrentRow() == null)
-//                    break;
-//                    mode = FormModeEnum.VM_INS;
-//                    customers = new PCus_Addr();
-//                    for (IEntityProperty<PCus_Addr, ?> value : EntityMetadataFactory.getEntityMetaData(PCus_Addr.class)
-//                            .getPropertiesMap().values()) {
-//                        if (!(value.isTransient() || value.isId()))
-//                            value.invokeSetter(customers, value.invokeGetter(dsPcusAddr.getCurrentRow()));
-//                        break;
-//                    }
-//            case VM_EDIT:
-//            case VM_SHOW:
-//            case VM_DEL:
-//                customers = dsPcusAddr.getCurrentRow();
-//                break;
-//        }
-//        if (customers != null) {
-//            new FXFormLauncher<>(this, EditCustomersController.class)
-//                    .dataObject(customers)
-//                    .dialogMode(mode)
-//                    .initProperties(getInitProperties())
-//                    .callback(this::doFormResult)
-//                    .doModal();
-//
-//        }
-//
-
     }
 
-    private void doFormResult(FormReturnEnum ok, JInvFXFormController<PCustomers> dctl) {
+    private void doFormResult(FormReturnEnum ok, JInvFXFormController<PCus_Addr> dctl) {
         if (FormReturnEnum.RET_OK == ok) {
             switch (dctl.getFormMode()) {
                 case VM_INS:

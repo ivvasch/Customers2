@@ -7,21 +7,21 @@
 <?import ru.inversion.fx.form.controls.JInvTableColumn?>
 <?import ru.inversion.fx.form.controls.JInvToolBar?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.inversion.customers2.controller.CustomersController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.inversion.customers2.controller.CUS_ADDRController">
    <children>
-      <JInvToolBar fx:id="toolBar" prefHeight="30.0" prefWidth="590.0">
+      <JInvToolBar fx:id="toolBarAddr" prefHeight="30.0" prefWidth="590.0">
          <VBox.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </VBox.margin>
       </JInvToolBar>
-      <JInvTable fx:id="customers" prefHeight="338.0" prefWidth="590.0" VBox.vgrow="ALWAYS">
+      <JInvTable fx:id="cus_addr" prefHeight="338.0" prefWidth="590.0" VBox.vgrow="ALWAYS">
          <VBox.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </VBox.margin>
          <columns>
             <JInvTableColumn fx:id="ICUSNUM" editable="false" fieldName="ICUSNUM" prefWidth="75.0" text="%icusnum" transientColumn="false" />
             <JInvTableColumn fx:id="ID_ADDR" editable="false" fieldName="ID_ADDR" prefWidth="75.0" text="%id_addr" transientColumn="false" />
-            <JInvTableColumn fx:id="ADDR_TYPE" editable="false" fieldName="ADDR_TYPE" prefWidth="75.0" text="%addr_type" transientColumn="false" />
+            <JInvTableColumn fx:id="ADDRTYPE" editable="false" fieldName="ADDRTYPE" prefWidth="75.0" text="%addrtype" transientColumn="false" />
             <JInvTableColumn fx:id="COUNTRY" editable="false" fieldName="COUNTRY" prefWidth="75.0" text="%country" transientColumn="false" />
             <JInvTableColumn fx:id="POST_INDEX" editable="false" fieldName="POST_INDEX" prefWidth="75.0" text="%post_index" transientColumn="false" />
             <JInvTableColumn fx:id="CITY" editable="false" fieldName="CITY" prefWidth="75.0" text="%city" transientColumn="false" />

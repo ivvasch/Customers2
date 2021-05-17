@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import ru.inversion.fx.form.controls.JInvLabel?>
+<?import ru.inversion.fx.form.controls.JInvLongField?>
+<?import ru.inversion.fx.form.controls.JInvTextField?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.inversion.customers2.controller.EditCus_AddrController">
+    <children>
+        <JInvLabel text="Cus_AddrTitle">
+            <font>
+                <Font size="16.0" />
+            </font>
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+        </JInvLabel>
+        <GridPane prefHeight="287.0" prefWidth="487.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <JInvLabel alignment="CENTER" contentDisplay="TOP" linkFieldName="ICUSNUM" text="%icusnum" GridPane.halignment="RIGHT">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </JInvLabel>
+                <JInvLabel alignment="CENTER" linkFieldName="ADDR_TYPE" text="%addr_type" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </JInvLabel>
+                <JInvLabel alignment="CENTER" linkFieldName="COUNTRY" text="%country" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </JInvLabel>
+                <JInvLabel alignment="CENTER" linkFieldName="POST_INDEX" text="%post_index" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </JInvLabel>
+                <JInvLabel alignment="CENTER" linkFieldName="CITY" text="%city" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </JInvLabel>
+                <JInvLabel alignment="CENTER" linkFieldName="INFR_TYPE" text="%infr_type" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </JInvLabel>
+                <JInvLabel alignment="CENTER" linkFieldName="INFR_NAME" text="%infr_name" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </JInvLabel>
+                <JInvLabel alignment="CENTER" linkFieldName="DOM" text="%dom" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </JInvLabel>
+                <JInvLongField fx:id="ICUSNUM" editable="false" opacity="0.5" GridPane.columnIndex="1">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                </JInvLongField>
+                <JInvTextField fx:id="COUNTRY" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                </JInvTextField>
+                <JInvTextField fx:id="POST_INDEX" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                </JInvTextField>
+                <JInvTextField fx:id="CITY" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                </JInvTextField>
+                <JInvTextField fx:id="INFR_NAME" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                </JInvTextField>
+                <ComboBox fx:id="ADDR_TYPE" prefHeight="25.0" prefWidth="203.0" value="0 - Регистрации" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </GridPane.margin>
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="0 - Регистрации" />
+                            <String fx:value="1 - Почтовый" />
+                            <String fx:value="2 - Фактический" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            <JInvLabel alignment="CENTER" linkFieldName="KORP" text="%korp" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </JInvLabel>
+            <JInvLabel alignment="CENTER" linkFieldName="KV" text="%kv" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </JInvLabel>
+            <JInvTextField fx:id="DOM" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </JInvTextField>
+            <JInvTextField fx:id="KORP" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </JInvTextField>
+            <JInvTextField fx:id="KV" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </JInvTextField>
+            <JInvTextField fx:id="INFR_TYPE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" />
+         </VBox.margin>
+        </GridPane>
+        <ButtonBar prefHeight="40.0" prefWidth="378.0">
+            <buttons>
+                <Button mnemonicParsing="false" text="%Edit.Ok" />
+                <Button mnemonicParsing="false" text="%Edit.Cancell" />
+            </buttons>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" />
+         </VBox.margin>
+        </ButtonBar>
+    </children>
+</VBox>

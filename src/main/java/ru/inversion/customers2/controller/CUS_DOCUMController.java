@@ -82,31 +82,7 @@ public class CUS_DOCUMController extends JInvFXBrowserController {
                     .initProperties(getInitProperties())
                     .callback(this::doFormResult)
                     .doModal();
-
         }
-
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(EditCustomersController.class.getResource("fxml/EditCustomers.fxml"));
-//
-//        Stage stage = new Stage();
-//        if (mode.equals("ins")) {
-//            PCustomers customers = new PCustomers();
-//            stage.setTitle("ins");
-//            stage.initModality(Modality.WINDOW_MODAL);
-//            stage.initOwner(getViewContext().getStageOrPrimaryStage());
-//            try {
-//                VBox vbox = loader.load();
-//                Scene scene = new Scene(vbox);
-//                stage.setScene(scene);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            EditCustomersController controller = loader.getController();
-//            controller.setDialogStage(stage);
-//            controller.setCustomers(customers);
-//        stage.showAndWait();
-//        }
-
     }
 
     private void doFormResult(FormReturnEnum ok, JInvFXFormController<PCustomers> dctl) {
