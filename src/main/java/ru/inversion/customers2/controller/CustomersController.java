@@ -1,13 +1,23 @@
 package ru.inversion.customers2.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import ru.inversion.customers2.App;
 import ru.inversion.customers2.pojo.PCustomers;
+import ru.inversion.dataset.IDataSet;
 import ru.inversion.dataset.XXIDataSet;
 import ru.inversion.dataset.fx.DSFXAdapter;
-import ru.inversion.fx.form.ActionFactory;
-import ru.inversion.fx.form.JInvFXBrowserController;
+import ru.inversion.fx.form.*;
 import ru.inversion.fx.form.controls.JInvTable;
 import ru.inversion.fx.form.controls.JInvToolBar;
+import ru.inversion.meta.EntityMetadataFactory;
+import ru.inversion.meta.IEntityProperty;
+
+import java.io.IOException;
 
 public class CustomersController extends JInvFXBrowserController {
 
@@ -23,11 +33,13 @@ public class CustomersController extends JInvFXBrowserController {
         DSFXAdapter<PCustomers> dsfx = DSFXAdapter.bind(dsPcus, customers, null, false);
 //        dsfx.setEnableFilter(true);
         initToolBar();
-        customers.setAction(ActionFactory.ActionTypeEnum.CREATE, a -> doOperation("ins"));
-        customers.setAction(ActionFactory.ActionTypeEnum.CREATE_BY, a -> doOperation("dbl"));
-        customers.setAction(ActionFactory.ActionTypeEnum.VIEW, a -> doOperation("view"));
-        customers.setAction(ActionFactory.ActionTypeEnum.UPDATE, a -> doOperation("upd"));
-        customers.setAction(ActionFactory.ActionTypeEnum.DELETE, a -> doOperation("del"));
+        doRefresh();
+        customers.setToolBar(toolBar);
+        customers.setAction(ActionFactory.ActionTypeEnum.CREATE, a -> doOperation(FormModeEnum.VM_INS));
+        customers.setAction(ActionFactory.ActionTypeEnum.CREATE_BY, a -> doOperation(FormModeEnum.VM_NONE));
+        customers.setAction(ActionFactory.ActionTypeEnum.VIEW, a -> doOperation(FormModeEnum.VM_SHOW));
+        customers.setAction(ActionFactory.ActionTypeEnum.UPDATE, a -> doOperation(FormModeEnum.VM_EDIT));
+        customers.setAction(ActionFactory.ActionTypeEnum.DELETE, a -> doOperation(FormModeEnum.VM_DEL));
         customers.setAction(ActionFactory.ActionTypeEnum.REFRESH, a -> doRefresh());
     }
 
@@ -45,8 +57,80 @@ public class CustomersController extends JInvFXBrowserController {
                 ActionFactory.ActionTypeEnum.REFRESH);
     }
 
-    private void doOperation(String mode) {
+    private void doOperation(AbstractBaseController.FormModeEnum mode) {
+        PCustomers customers = null;
+        switch (mode) {
+            case VM_INS:
+                customers = new PCustomers();
+                break;
+            case VM_NONE:
+                if (dsPcus.getCurrentRow() == null)
+                    break;
+                    mode = FormModeEnum.VM_INS;
+                    customers = new PCustomers();
+                    for (IEntityProperty<PCustomers, ?> value : EntityMetadataFactory.getEntityMetaData(PCustomers.class)
+                            .getPropertiesMap().values()) {
+                        if (!(value.isTransient() || value.isId()))
+                            value.invokeSetter(customers, value.invokeGetter(dsPcus.getCurrentRow()));
+                        break;
+                    }
+            case VM_EDIT:
+            case VM_SHOW:
+            case VM_DEL:
+                customers = dsPcus.getCurrentRow();
+                break;
+        }
+        if (customers != null) {
+            new FXFormLauncher<>(this, EditCustomersController.class)
+                    .dataObject(customers)
+                    .dialogMode(mode)
+                    .initProperties(getInitProperties())
+                    .callback(this::doFormResult)
+                    .doModal();
 
+        }
+
+//        FXMLLoader loader = new FXMLLoader();
+//        loader.setLocation(EditCustomersController.class.getResource("fxml/EditCustomers.fxml"));
+//
+//        Stage stage = new Stage();
+//        if (mode.equals("ins")) {
+//            PCustomers customers = new PCustomers();
+//            stage.setTitle("ins");
+//            stage.initModality(Modality.WINDOW_MODAL);
+//            stage.initOwner(getViewContext().getStageOrPrimaryStage());
+//            try {
+//                VBox vbox = loader.load();
+//                Scene scene = new Scene(vbox);
+//                stage.setScene(scene);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            EditCustomersController controller = loader.getController();
+//            controller.setDialogStage(stage);
+//            controller.setCustomers(customers);
+//        stage.showAndWait();
+//        }
+
+    }
+
+    private void doFormResult(AbstractBaseController.FormReturnEnum ok, JInvFXFormController<PCustomers> dctl) {
+        if (FormReturnEnum.RET_OK == ok) {
+            switch (dctl.getFormMode()) {
+                case VM_INS:
+                    dsPcus.insertRow(dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
+                    break;
+                case VM_EDIT:
+                    dsPcus.updateCurrentRow(dctl.getDataObject());
+                    break;
+                case VM_DEL:
+                    dsPcus.removeCurrentRow();
+                    break;
+                default:
+                    break;
+            }
+        }
+        customers.requestFocus();
     }
 
     private void doRefresh() {
