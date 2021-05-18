@@ -4,37 +4,63 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import jfxtras.scene.control.LocalDateTextField;
-import ru.inversion.customers2.pojo.PCus_Addr;
+import ru.inversion.bicomp.util.ParamMap;
 import ru.inversion.customers2.pojo.PCustomers;
+import ru.inversion.db.expr.SQLExpressionException;
 import ru.inversion.fx.form.JInvFXFormController;
+import ru.inversion.fx.form.controls.JInvButton;
 import ru.inversion.fx.form.controls.JInvLongField;
 import ru.inversion.fx.form.controls.JInvTextField;
 
 public class EditCustomersController extends JInvFXFormController<PCustomers> {
 
-    @FXML private JInvLongField ICUSNUM;
+    @FXML
+    private JInvLongField ICUSNUM;
     @FXML private ComboBox CCUSFLAG;
     @FXML private JInvTextField CCUSFIRST_NAME;
     @FXML private JInvTextField CCUSMIDDLE_NAME;
     @FXML private JInvTextField CCUSLAST_NAME;
-    @FXML private JInvLongField CCUSNUMNAL;
+    @FXML private JInvTextField CCUSNUMNAL;
     @FXML private JInvTextField CCUSSNILS;
     @FXML private LocalDateTextField DCUSBIRTHDAY;
+    @FXML private JInvButton btOk;
+    @FXML private JInvButton btCancell;
+    private Long ACT;
     private Stage dialogSatge;
     private PCustomers customers;
 
 
-    public void setCustomers(PCustomers customers) {
-        this.customers = customers;
-
-        ICUSNUM.setText(customers.getICUSNUM().toString());
-//        CCUSFLAG.setButtonCell(customers.getCCUSFLAG());
-        CCUSFIRST_NAME.setText(customers.getCCUSFIRST_NAME());
-        CCUSMIDDLE_NAME.setText(customers.getCCUSMIDDLE_NAME());
-        CCUSLAST_NAME.setText(customers.getCCUSLAST_NAME());
-        CCUSNUMNAL.setText(customers.getCCUSNUMNAL().toString());
-        CCUSSNILS.setText(customers.getCCUSSNILS());
-        DCUSBIRTHDAY.setText(customers.getDCUSBIRTHDAY().toString());
+    @Override
+    protected void init() throws Exception {
+        super.init();
+        btOk.setOnAction((event) -> {
+        if (getFormMode() == FormModeEnum.VM_INS){
+            setACT(1L);
+        }
+//            System.out.println("ccusfirst_name" +  CCUSFIRST_NAME.getText());
+//            System.out.println("ccusmiddle_name" + CCUSMIDDLE_NAME.getText());
+//            System.out.println("ccuslast_name" + CCUSLAST_NAME.getText());
+//            System.out.println("ccusnumnal" + CCUSNUMNAL.getText());
+//            System.out.println("ccussnils" + CCUSSNILS.getText());
+//            System.out.println("dcusbirthday" + DCUSBIRTHDAY.getLocalDate());
+//            System.out.println("act" + getACT());
+//            System.out.println(CCUSFLAG.getValue().toString().charAt(0));
+            ParamMap map = new ParamMap();
+            map.put("ccusflag", CCUSFLAG.getValue().toString().charAt(0));
+            map.put("icusnum", ICUSNUM.getValue());
+            map.put("ccusfirst_name", CCUSFIRST_NAME.getText());
+            map.put("ccusmiddle_name", CCUSMIDDLE_NAME.getText());
+            map.put("ccuslast_name", CCUSLAST_NAME.getText());
+            map.put("ccusnumnal", CCUSNUMNAL.getText());
+            map.put("ccussnils", CCUSSNILS.getText());
+            map.put("dcusbirthday", DCUSBIRTHDAY.getLocalDate());
+            map.put("act", getACT());
+            try {
+                map.exec(this, getClass().getResource("plsql/def.xml"), "ivv_cus_ins");
+            } catch (SQLExpressionException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public JInvLongField getICUSNUM() {
@@ -57,7 +83,7 @@ public class EditCustomersController extends JInvFXFormController<PCustomers> {
         return CCUSLAST_NAME;
     }
 
-    public JInvLongField getCCUSNUMNAL() {
+    public JInvTextField getCCUSNUMNAL() {
         return CCUSNUMNAL;
     }
 
@@ -68,8 +94,26 @@ public class EditCustomersController extends JInvFXFormController<PCustomers> {
     public LocalDateTextField getDCUSBIRTHDAY() {
         return DCUSBIRTHDAY;
     }
-    // ============= Сеттеры
 
+    public JInvButton getBtOk() {
+        return btOk;
+    }
+
+    public JInvButton getBtCancell() {
+        return btCancell;
+    }
+
+    public Long getACT() {
+        return ACT;
+    }
+
+    public Stage getDialogSatge() {
+        return dialogSatge;
+    }
+
+    public PCustomers getCustomers() {
+        return customers;
+    }
 
     public void setICUSNUM(JInvLongField ICUSNUM) {
         this.ICUSNUM = ICUSNUM;
@@ -103,9 +147,23 @@ public class EditCustomersController extends JInvFXFormController<PCustomers> {
         this.DCUSBIRTHDAY = DCUSBIRTHDAY;
     }
 
-
-    public void setDialogStage(Stage stage) {
-        this.dialogSatge = stage;
+    public void setBtOk(JInvButton btOk) {
+        this.btOk = btOk;
     }
 
+    public void setBtCancell(JInvButton btCancell) {
+        this.btCancell = btCancell;
+    }
+
+    public void setACT(Long ACT) {
+        this.ACT = ACT;
+    }
+
+    public void setDialogSatge(Stage dialogSatge) {
+        this.dialogSatge = dialogSatge;
+    }
+
+    public void setCustomers(PCustomers customers) {
+        this.customers = customers;
+    }
 }

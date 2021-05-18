@@ -18,7 +18,7 @@ public class CustomersController extends JInvFXBrowserController {
     @FXML private CUSController cusTabPageController;
     @FXML private CUS_ADDRController cusAddrTabPageController;
 //    @FXML private CUS_CONTACTSController cus_contactsController;
-//    @FXML private CUS_DOCUMController cus_documController;
+    @FXML private CUS_DOCUMController cusDocumTabPageController;
 //    @FXML private ALL_CUSController all_cusController;
 
 
@@ -38,9 +38,9 @@ public class CustomersController extends JInvFXBrowserController {
 //        cus_contactsController.setTaskContext(getTaskContext());
 //        cus_contactsController.setTitle("Контакты клиента");
 //
-//        cus_documController.setViewContext(getViewContext());
-//        cus_documController.setTaskContext(getTaskContext());
-//        cus_documController.setTitle("Документы клиента");
+        cusDocumTabPageController.setViewContext(getViewContext());
+        cusDocumTabPageController.setTaskContext(getTaskContext());
+        cusDocumTabPageController.setTitle("Документы клиента");
 //
 //        all_cusController.setViewContext(getViewContext());
 //        all_cusController.setTaskContext(getTaskContext());
@@ -49,7 +49,7 @@ public class CustomersController extends JInvFXBrowserController {
         cusTabPageController.init();
         cusAddrTabPageController.init();
 //        cus_contactsController.init();
-//        cus_documController.init();
+        cusDocumTabPageController.init();
 //        all_cusController.init();
 
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);

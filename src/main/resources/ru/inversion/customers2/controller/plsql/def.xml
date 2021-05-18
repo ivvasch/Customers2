@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sql_expr_list>
+    <expression name="ivv_cus_ins" lang="PL/SQL">
+        <script><![CDATA[
+            BEGIN
+              IVV_CUS_PACKAGE.ivv_cus_ins(ivv_ccusflag          =>    :CCUSFLAG,
+                                          ivv_icusnum           =>    :ICUSNUM,
+                                          ivv_ccusfirst_name    =>    :CCUSFIRST_NAME,
+                                          ivv_ccusmiddle_name   =>    :CCUSMIDDLE_NAME,
+                                          ivv_ccuslast_name     =>    :CCUSLAST_NAME,
+                                          ivv_ccusnumnal        =>    :CCUSNUMNAL,
+                                          ivv_ccussnils         =>    :CCUSSNILS,
+                                          ivv_dcusbirthday      =>    :DCUSBIRTHDAY,
+                                          ivv_act               =>    :ACT);
+            END;
+        ]]></script>
+        <parameters>
+            <parameter name="ccusflag"          mode="IN" sqlType="VARCHAR"     javaType="Combobox"     defaultValue=""/>
+            <parameter name="icusnum"           mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
+            <parameter name="ccusfirst_name"    mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
+            <parameter name="ccusmiddle_name"   mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
+            <parameter name="ccuslast_name"     mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
+            <parameter name="ccusnumnal"        mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
+            <parameter name="ccussnils"         mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
+            <parameter name="dcusbirthday"      mode="IN" sqlType="DATE"        javaType="LocalDate"    defaultValue=""/>
+            <parameter name="act"               mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
+            <parameter name="err"               mode="OUT" sqlType="VARCHAR"    javaType="String"       defaultValue=""/>
+            <parameter name="res"               mode="OUT" sqlType="BIGINT"     javaType="Long"         defaultValue=""/>
+        </parameters>
+    </expression>
+</sql_expr_list>
