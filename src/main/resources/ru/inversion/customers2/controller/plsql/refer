@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sql_expr_list>
+    <expression name="ivv_cus_ins" lang="PL/SQL">
+        <script><![CDATA[
+            BEGIN
+              IVV_CUS_PACKAGE.ivv_cus_ins(ivv_ccusflag =>           :CCUSFLAG,
+                                          ivv_ccusfirst_name =>     :CCUSFIRST_NAME,
+                                          ivv_ccusmiddle_name =>    :CCUSMIDDLE_NAME,
+                                          ivv_ccuslast_name =>      :CCUSLAST_NAME,
+                                          ivv_ccusnumnal =>         :CCUSNUMNAL,
+                                          ivv_ccussnils =>          :CCUSSNILS,
+                                          ivv_dcusbirthday =>       :DCUSBIRTHDAY
+                                          ivv_act =>                :ACT);
+            END;
+        ]]></script>
+        <parameters>
+            <parameter name="CCUSFLAG" mode="IN" sqlType="VARCHAR2" javaType="String" defaultValue=""/>
+            <parameter name="CCUSFIRST_NAME" mode="IN" sqlType="VARCHAR2" javaType="String" defaultValue=""/>
+            <parameter name="CCUSMIDDLE_NAME" mode="IN" sqlType="VARCHAR2" javaType="String" defaultValue=""/>
+            <parameter name="CCUSLAST_NAME" mode="IN" sqlType="VARCHAR2" javaType="String" defaultValue=""/>
+            <parameter name="CCUSNUMNAL" mode="IN" sqlType="VARCHAR2" javaType="String" defaultValue=""/>
+            <parameter name="CCUSSNILS" mode="IN" sqlType="VARCHAR2" javaType="String" defaultValue=""/>
+            <parameter name="DCUSBIRTHDAY" mode="IN" sqlType="DATE" javaType="LocalDate" defaultValue=""/>
+            <parameter name="ACT" mode="IN" sqlType="DATE" javaType="LocalDate" defaultValue=""/>
+            <parameter name="error" mode="OUT" sqlType="VARCHAR2" javaType="String" defaultValue=""/>
+            <parameter name="res" mode="OUT" sqlType="BIGINT" javaType="Long" defaultValue=""/>
+        </parameters>
+    </expression>
+</sql_expr_list>

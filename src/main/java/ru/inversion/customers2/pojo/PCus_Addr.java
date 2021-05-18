@@ -30,40 +30,47 @@ public class PCus_Addr extends IDMarkable implements Serializable {
 
     public PCus_Addr() {
     }
-@Id
-@Column(name = "ICUSNUM")
+
+    @Id
+    @Column(name = "ICUSNUM")
     public Long getICUSNUM() {
         return ICUSNUM;
     }
-@Column(name = "ID_ADDR")
+
+    @Column(name = "ID_ADDR")
     public Long getID_ADDR() {
         return ID_ADDR;
     }
-//    @Column(name = "ADDR_TYPE")
+
+    //    @Column(name = "ADDR_TYPE")
     public Long getADDR_TYPE() {
         return ADDR_TYPE;
     }
+
     @Column(name = "ADDRTYPE")
     public String getADDRTYPE() {
-        if(getADDR_TYPE() == 0)
+        if (getADDR_TYPE() == 0)
             return "Регистрации";
-        if (getADDR_TYPE()==1)
+        if (getADDR_TYPE() == 1)
             return "Почтовый";
-    return "Фактический";
+        return "Фактический";
     }
 
     @Column(name = "COUNTRY")
     public String getCOUNTRY() {
         return COUNTRY;
     }
-@Column(name = "POST_INDEX")
+
+    @Column(name = "POST_INDEX")
     public String getPOST_INDEX() {
         return POST_INDEX;
     }
-@Column(name = "CITY")
+
+    @Column(name = "CITY")
     public String getCITY() {
         return CITY;
     }
+
     public String getINFR_TYPE() {
         return INFR_TYPE;
     }
@@ -83,7 +90,8 @@ public class PCus_Addr extends IDMarkable implements Serializable {
     public String getKV() {
         return KV;
     }
-@Column(name = "ADDRESS")
+
+    @Column(name = "ADDRESS")
     public String getADDRESS() {
         return getINFR_NAME() == null ? "" : (
                 (getINFR_TYPE() != null ? getINFR_TYPE() : "") + ". "

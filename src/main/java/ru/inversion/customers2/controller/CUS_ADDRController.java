@@ -16,8 +16,10 @@ import ru.inversion.meta.IEntityProperty;
 
 public class CUS_ADDRController extends JInvFXBrowserController {
 
-    @FXML private JInvToolBar toolBarAddr;
-    @FXML private JInvTable<PCus_Addr> cus_addr;
+    @FXML
+    private JInvToolBar toolBarAddr;
+    @FXML
+    private JInvTable<PCus_Addr> cus_addr;
     private XXIDataSet<PCus_Addr> dsPcusAddr = new XXIDataSet<>();
 
 
@@ -36,6 +38,13 @@ public class CUS_ADDRController extends JInvFXBrowserController {
         cus_addr.setAction(ActionFactory.ActionTypeEnum.UPDATE, a -> doOperation(FormModeEnum.VM_EDIT));
         cus_addr.setAction(ActionFactory.ActionTypeEnum.DELETE, a -> doOperation(FormModeEnum.VM_DEL));
         cus_addr.setAction(ActionFactory.ActionTypeEnum.REFRESH, a -> doRefresh());
+
+//        for (TableColumn allColumn : cus_addr.getAllColumns()) {
+//            if (allColumn.getText().equals("Тип адреса")) {
+//                allColumn.setSortable(false);
+//            }
+//            System.out.println("=====>" + allColumn.getText());
+//        }
     }
 
     private void initDataSet() {
@@ -66,7 +75,7 @@ public class CUS_ADDRController extends JInvFXBrowserController {
                 for (IEntityProperty<PCus_Addr, ?> value : EntityMetadataFactory.getEntityMetaData(PCus_Addr.class).getPropertiesMap().values())
                     if (!(value.isTransient() || value.isId()))
                         value.invokeSetter(cus_addr, value.invokeGetter(dsPcusAddr.getCurrentRow()));
-                        break;
+                break;
             case VM_EDIT:
             case VM_SHOW:
             case VM_DEL:

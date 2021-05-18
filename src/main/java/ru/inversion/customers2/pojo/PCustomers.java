@@ -58,7 +58,7 @@ public class PCustomers extends IDMarkable implements Serializable {
         return CCUSNUMNAL;
     }
 
-    @Column(name = "CCUSNUMNAL")
+    @Column(name = "CCUSSNILS")
     public String getCCUSSNILS() {
         return CCUSSNILS;
     }
