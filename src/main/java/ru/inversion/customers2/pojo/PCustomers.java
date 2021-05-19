@@ -15,14 +15,16 @@ public class PCustomers extends IDMarkable implements Serializable {
 
     private static final Long serialVersionUID = 13_05_2021_15_12L;
 
-        private Long ICUSNUM;
-        private String CCUSFLAG;
-        private String CCUSFIRST_NAME;
-        private String CCUSMIDDLE_NAME;
-        private String CCUSLAST_NAME;
-        private Long CCUSNUMNAL;
-        private String CCUSSNILS;
-        private LocalDate DCUSBIRTHDAY;
+    private Long ICUSNUM;
+    private String CCUSFLAG;
+    private String CCUSFIRST_NAME;
+    private String CCUSMIDDLE_NAME;
+    private String CCUSLAST_NAME;
+    private Long CCUSNUMNAL;
+    private String CCUSSNILS;
+    private LocalDate DCUSBIRTHDAY;
+    private String ERR;
+    private Long RES;
 
     public PCustomers() {
     }
@@ -68,6 +70,14 @@ public class PCustomers extends IDMarkable implements Serializable {
         return DCUSBIRTHDAY;
     }
 
+    public String getERR() {
+        return ERR;
+    }
+
+    public Long getRES() {
+        return RES;
+    }
+
     // ================ Сеттеры
     public void setICUSNUM(Long ICUSNUM) {
         this.ICUSNUM = ICUSNUM;
@@ -99,6 +109,14 @@ public class PCustomers extends IDMarkable implements Serializable {
 
     public void setDCUSBIRTHDAY(LocalDate DCUSBIRTHDA) {
         this.DCUSBIRTHDAY = DCUSBIRTHDA;
+    }
+
+    public void setERR(String ERR) {
+        this.ERR = ERR;
+    }
+
+    public void setRES(Long RES) {
+        this.RES = RES;
     }
 
     @Override
