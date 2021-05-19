@@ -11,7 +11,9 @@
                                           ivv_ccusnumnal        =>    :CCUSNUMNAL,
                                           ivv_ccussnils         =>    :CCUSSNILS,
                                           ivv_dcusbirthday      =>    :DCUSBIRTHDAY,
-                                          ivv_act               =>    :ACT);
+                                          ivv_act               =>    :ACT,
+                                          ivv_err               =>    :ERR,
+                                          ivv_res               =>    :RES);
             END;
         ]]></script>
         <parameters>

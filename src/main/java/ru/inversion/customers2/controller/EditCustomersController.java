@@ -34,17 +34,18 @@ public class EditCustomersController extends JInvFXFormController<PCustomers> {
     protected void init() throws Exception {
         super.init();
         btOk.setOnAction((event) -> {
-        if (getFormMode() == FormModeEnum.VM_INS){
-            setACT(1L);
-        }
-//            System.out.println("ccusfirst_name" +  CCUSFIRST_NAME.getText());
-//            System.out.println("ccusmiddle_name" + CCUSMIDDLE_NAME.getText());
-//            System.out.println("ccuslast_name" + CCUSLAST_NAME.getText());
-//            System.out.println("ccusnumnal" + CCUSNUMNAL.getText());
-//            System.out.println("ccussnils" + CCUSSNILS.getText());
-//            System.out.println("dcusbirthday" + DCUSBIRTHDAY.getLocalDate());
-//            System.out.println("act" + getACT());
-//            System.out.println(CCUSFLAG.getValue().toString().charAt(0));
+            switch (getFormMode()) {
+                case VM_INS:
+                case VM_NONE:
+                    setACT(1L);
+                    break;
+                case VM_EDIT:
+                    setACT(2L);
+                    break;
+                case VM_DEL:
+                    setACT(3L);
+                    break;
+            }
             ParamMap map = new ParamMap();
             map.put("ccusflag", CCUSFLAG.getValue().toString().charAt(0));
             map.put("icusnum", ICUSNUM.getValue());
@@ -60,6 +61,10 @@ public class EditCustomersController extends JInvFXFormController<PCustomers> {
             } catch (SQLExpressionException e) {
                 e.printStackTrace();
             }
+            this.close(FormReturnEnum.RET_OK);
+        });
+        btCancell.setOnAction(event -> {
+            this.close(FormReturnEnum.RET_CANCEL);
         });
     }
 
