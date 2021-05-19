@@ -80,7 +80,7 @@ public class ALL_CUSController extends JInvFXBrowserController {
                     .dataObject(customers)
                     .dialogMode(mode)
                     .initProperties(getInitProperties())
-                    .callback(this::doFormResult)
+//                    .callback(this::doFormResult)
                     .doModal();
 
         }

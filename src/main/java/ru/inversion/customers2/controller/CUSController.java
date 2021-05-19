@@ -1,6 +1,7 @@
 package ru.inversion.customers2.controller;
 
 import javafx.fxml.FXML;
+import org.apache.poi.ss.formula.functions.T;
 import ru.inversion.customers2.pojo.PCustomers;
 import ru.inversion.dataset.IDataSet;
 import ru.inversion.dataset.XXIDataSet;
@@ -13,6 +14,8 @@ import ru.inversion.fx.form.controls.JInvTable;
 import ru.inversion.fx.form.controls.JInvToolBar;
 import ru.inversion.meta.EntityMetadataFactory;
 import ru.inversion.meta.IEntityProperty;
+
+import java.util.function.BiConsumer;
 
 public class CUSController extends JInvFXBrowserController {
 
@@ -80,43 +83,27 @@ public class CUSController extends JInvFXBrowserController {
                     .dataObject(customers)
                     .dialogMode(mode)
                     .initProperties(getInitProperties())
-                    .callback(this::doFormResult)
+                    .clb((t, u) -> {
+                        switch(t) {
+                            case RET_OK:
+                                doFormResult(t, u);
+                                break;
+                            case RET_CANCEL:
+                                break;
+                        }
+                    })
                     .doModal();
-
         }
-
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(EditCustomersController.class.getResource("fxml/EditCustomers.fxml"));
-//
-//        Stage stage = new Stage();
-//        if (mode.equals("ins")) {
-//            PCustomers customers = new PCustomers();
-//            stage.setTitle("ins");
-//            stage.initModality(Modality.WINDOW_MODAL);
-//            stage.initOwner(getViewContext().getStageOrPrimaryStage());
-//            try {
-//                VBox vbox = loader.load();
-//                Scene scene = new Scene(vbox);
-//                stage.setScene(scene);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            EditCustomersController controller = loader.getController();
-//            controller.setDialogStage(stage);
-//            controller.setCustomers(customers);
-//        stage.showAndWait();
-//        }
-
     }
 
-    private void doFormResult(FormReturnEnum ok, JInvFXFormController<PCustomers> dctl) {
+    private void doFormResult(FormReturnEnum ok, JInvFXFormController dctl) {
         if (FormReturnEnum.RET_OK == ok) {
             switch (dctl.getFormMode()) {
                 case VM_INS:
-                    dsPcus.insertRow(dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
+                    dsPcus.insertRow((PCustomers) dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
                     break;
                 case VM_EDIT:
-                    dsPcus.updateCurrentRow(dctl.getDataObject());
+                    dsPcus.updateCurrentRow((PCustomers) dctl.getDataObject());
                     break;
                 case VM_DEL:
                     dsPcus.removeCurrentRow();

@@ -20,7 +20,7 @@ public class PCustomers extends IDMarkable implements Serializable {
     private String CCUSFIRST_NAME;
     private String CCUSMIDDLE_NAME;
     private String CCUSLAST_NAME;
-    private Long CCUSNUMNAL;
+    private String CCUSNUMNAL;
     private String CCUSSNILS;
     private LocalDate DCUSBIRTHDAY;
     private String ERR;
@@ -56,7 +56,7 @@ public class PCustomers extends IDMarkable implements Serializable {
     }
 
     @Column(name = "CCUSNUMNAL")
-    public Long getCCUSNUMNAL() {
+    public String getCCUSNUMNAL() {
         return CCUSNUMNAL;
     }
 
@@ -99,7 +99,7 @@ public class PCustomers extends IDMarkable implements Serializable {
         this.CCUSLAST_NAME = CCUSLAST_NAME;
     }
 
-    public void setCCUSNUMNAL(Long CCUSNUMNAL) {
+    public void setCCUSNUMNAL(String CCUSNUMNAL) {
         this.CCUSNUMNAL = CCUSNUMNAL;
     }
 

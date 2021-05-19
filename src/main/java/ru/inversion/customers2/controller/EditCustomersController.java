@@ -7,12 +7,13 @@ import jfxtras.scene.control.LocalDateTextField;
 import ru.inversion.bicomp.util.ParamMap;
 import ru.inversion.customers2.pojo.PCustomers;
 import ru.inversion.db.expr.SQLExpressionException;
+import ru.inversion.fx.form.JInvFXBrowserController;
 import ru.inversion.fx.form.JInvFXFormController;
 import ru.inversion.fx.form.controls.JInvButton;
 import ru.inversion.fx.form.controls.JInvLongField;
 import ru.inversion.fx.form.controls.JInvTextField;
 
-public class EditCustomersController extends JInvFXFormController<PCustomers> {
+public class EditCustomersController extends JInvFXBrowserController {
 
     @FXML
     private JInvLongField ICUSNUM;
@@ -23,8 +24,8 @@ public class EditCustomersController extends JInvFXFormController<PCustomers> {
     @FXML private JInvTextField CCUSNUMNAL;
     @FXML private JInvTextField CCUSSNILS;
     @FXML private LocalDateTextField DCUSBIRTHDAY;
-    @FXML private JInvButton btOk;
-    @FXML private JInvButton btCancell;
+    @FXML private JInvButton btnOk;
+    @FXML private JInvButton btnCancell;
     private Long ACT;
     private Stage dialogSatge;
     private PCustomers customers;
@@ -33,7 +34,7 @@ public class EditCustomersController extends JInvFXFormController<PCustomers> {
     @Override
     protected void init() throws Exception {
         super.init();
-        btOk.setOnAction((event) -> {
+        btnOk.setOnAction((event) -> {
             switch (getFormMode()) {
                 case VM_INS:
                 case VM_NONE:
@@ -63,7 +64,7 @@ public class EditCustomersController extends JInvFXFormController<PCustomers> {
             }
             this.close(FormReturnEnum.RET_OK);
         });
-        btCancell.setOnAction(event -> {
+        btnCancell.setOnAction(event -> {
             this.close(FormReturnEnum.RET_CANCEL);
         });
     }
@@ -100,12 +101,12 @@ public class EditCustomersController extends JInvFXFormController<PCustomers> {
         return DCUSBIRTHDAY;
     }
 
-    public JInvButton getBtOk() {
-        return btOk;
+    public JInvButton getBtnOk() {
+        return btnOk;
     }
 
-    public JInvButton getBtCancell() {
-        return btCancell;
+    public JInvButton getBtnCancell() {
+        return btnCancell;
     }
 
     public Long getACT() {
@@ -152,12 +153,12 @@ public class EditCustomersController extends JInvFXFormController<PCustomers> {
         this.DCUSBIRTHDAY = DCUSBIRTHDAY;
     }
 
-    public void setBtOk(JInvButton btOk) {
-        this.btOk = btOk;
+    public void setBtnOk(JInvButton btnOk) {
+        this.btnOk = btnOk;
     }
 
-    public void setBtCancell(JInvButton btCancell) {
-        this.btCancell = btCancell;
+    public void setBtnCancell(JInvButton btnCancell) {
+        this.btnCancell = btnCancell;
     }
 
     public void setACT(Long ACT) {
@@ -170,5 +171,8 @@ public class EditCustomersController extends JInvFXFormController<PCustomers> {
 
     public void setCustomers(PCustomers customers) {
         this.customers = customers;
+    }
+    public PCustomers getDataObject() {
+        return customers;
     }
 }
