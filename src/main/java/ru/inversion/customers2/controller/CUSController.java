@@ -56,31 +56,33 @@ public class CUSController extends JInvFXBrowserController {
     }
 
     private void doOperation(FormModeEnum mode) {
-        PCustomers customers = null;
+//        EditCustomersController controller = new EditCustomersController();
+//        controller.setCustomers(dsPcus.getCurrentRow());
+        PCustomers pCustomers = null;
         switch (mode) {
             case VM_INS:
-                customers = new PCustomers();
+                pCustomers = new PCustomers();
                 break;
             case VM_NONE:
                 if (dsPcus.getCurrentRow() == null)
                     break;
                     mode = FormModeEnum.VM_INS;
-                    customers = new PCustomers();
+                    pCustomers = new PCustomers();
                     for (IEntityProperty<PCustomers, ?> value : EntityMetadataFactory.getEntityMetaData(PCustomers.class)
                             .getPropertiesMap().values()) {
                         if (!(value.isTransient() || value.isId()))
-                            value.invokeSetter(customers, value.invokeGetter(dsPcus.getCurrentRow()));
+                            value.invokeSetter(pCustomers, value.invokeGetter(dsPcus.getCurrentRow()));
                         break;
                     }
             case VM_EDIT:
             case VM_SHOW:
             case VM_DEL:
-                customers = dsPcus.getCurrentRow();
+                pCustomers = dsPcus.getCurrentRow();
                 break;
         }
-        if (customers != null) {
+        if (pCustomers != null) {
             new FXFormLauncher<>(this, EditCustomersController.class)
-                    .dataObject(customers)
+                    .dataObject(pCustomers)
                     .dialogMode(mode)
                     .initProperties(getInitProperties())
                     .clb((t, u) -> {
@@ -96,8 +98,8 @@ public class CUSController extends JInvFXBrowserController {
         }
     }
 
-    private void doFormResult(FormReturnEnum ok, JInvFXFormController dctl) {
-        if (FormReturnEnum.RET_OK == ok) {
+    private void doFormResult(FormReturnEnum ok, JInvFXFormController<PCustomers> dctl) {
+        if (JInvFXFormController.FormReturnEnum.RET_OK == ok) {
             switch (dctl.getFormMode()) {
                 case VM_INS:
                     dsPcus.insertRow((PCustomers) dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);

@@ -1,8 +1,5 @@
 package ru.inversion.customers2.pojo;
-
-import javafx.fxml.FXML;
 import ru.inversion.dataset.mark.IDMarkable;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -23,10 +20,19 @@ public class PCustomers extends IDMarkable implements Serializable {
     private String CCUSNUMNAL;
     private String CCUSSNILS;
     private LocalDate DCUSBIRTHDAY;
+    private Long ACT;
     private String ERR;
     private Long RES;
 
     public PCustomers() {
+    }
+
+    public Long getACT() {
+        return ACT;
+    }
+
+    public void setACT(Long ACT) {
+        this.ACT = ACT;
     }
 
     @Id
