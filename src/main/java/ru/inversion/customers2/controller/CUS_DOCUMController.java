@@ -23,7 +23,7 @@ public class CUS_DOCUMController extends JInvFXBrowserController {
 
     @Override
     protected void init() throws Exception {
-        setTitle("Таблица Customers");
+        setTitle("Таблица Документы кклиента");
         initDataSet();
         DSFXAdapter<PCus_Docum> dsfx = DSFXAdapter.bind(dsPcus, cus_doc, null, false);
 //        dsfx.setEnableFilter(true);
@@ -85,14 +85,14 @@ public class CUS_DOCUMController extends JInvFXBrowserController {
         }
     }
 
-    private void doFormResult(FormReturnEnum ok, JInvFXFormController<PCus_Docum> dctl) {
+    private void doFormResult(FormReturnEnum ok, JInvFXFormController dctl) {
         if (FormReturnEnum.RET_OK == ok) {
             switch (dctl.getFormMode()) {
                 case VM_INS:
-                    dsPcus.insertRow(dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
+                    dsPcus.insertRow((PCus_Docum) dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
                     break;
                 case VM_EDIT:
-                    dsPcus.updateCurrentRow(dctl.getDataObject());
+                    dsPcus.updateCurrentRow((PCus_Docum) dctl.getDataObject());
                     break;
                 case VM_DEL:
                     dsPcus.removeCurrentRow();

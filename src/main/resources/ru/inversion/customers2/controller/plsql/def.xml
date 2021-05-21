@@ -30,4 +30,40 @@
             <parameter name="res"               mode="OUT" sqlType="BIGINT"     javaType="Long"         defaultValue=""/>
         </parameters>
     </expression>
+    <expression name="ivv_cus_adr_ins" lang="PL/SQL">
+        <script><![CDATA[
+        BEGIN
+          IVV_CUS_PACKAGE.ivv_cus_addr_ins(ivv_icusnum    =>    :ICUSNUM,
+                                          ivv_id_addr    =>    :ID_ADDR,
+                                          ivv_addr_type  =>    :ADDR_TYPE,
+                                          ivv_country    =>    :COUNTRY,
+                                          ivv_post_index =>    :POST_INDEX,
+                                          ivv_ccussnils  =>    :CITY,
+                                          ivv_infr_type  =>    :INFR_TYPE,
+                                          ivv_infr_name  =>    :INFR_NAME,
+                                          ivv_dom        =>    :DOM,
+                                          ivv_korp       =>    :KORP,
+                                          ivv_kv         =>    :KV,
+                                          ivv_act        =>    :ACT,
+                                          ivv_err        =>    :ERR,
+                                          ivv_res        =>    :RES);
+            END;
+        ]]></script>
+        <parameters>
+            <parameter name="icusnum"     mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
+            <parameter name="id_addr"     mode="IN" sqlType="BIGINT"     javaType="Combobox"     defaultValue=""/>
+            <parameter name="addr_type"   mode="IN" sqlType="BIGINT"     javaType="Long"       defaultValue=""/>
+            <parameter name="country"     mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
+            <parameter name="post_index"  mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
+            <parameter name="city"        mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
+            <parameter name="infr_type"   mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
+            <parameter name="infr_name"   mode="IN" sqlType="DATE"        javaType="LocalDate"    defaultValue=""/>
+            <parameter name="dom"         mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
+            <parameter name="korp"        mode="OUT" sqlType="VARCHAR"    javaType="String"       defaultValue=""/>
+            <parameter name="kv"          mode="OUT" sqlType="BIGINT"     javaType="Long"         defaultValue=""/>
+            <parameter name="act"               mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
+            <parameter name="err"               mode="OUT" sqlType="VARCHAR"    javaType="String"       defaultValue=""/>
+            <parameter name="res"               mode="OUT" sqlType="BIGINT"     javaType="Long"         defaultValue=""/>
+        </parameters>
+    </expression>
 </sql_expr_list>

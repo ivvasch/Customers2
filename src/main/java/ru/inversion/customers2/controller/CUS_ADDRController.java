@@ -38,13 +38,6 @@ public class CUS_ADDRController extends JInvFXBrowserController {
         cus_addr.setAction(ActionFactory.ActionTypeEnum.UPDATE, a -> doOperation(FormModeEnum.VM_EDIT));
         cus_addr.setAction(ActionFactory.ActionTypeEnum.DELETE, a -> doOperation(FormModeEnum.VM_DEL));
         cus_addr.setAction(ActionFactory.ActionTypeEnum.REFRESH, a -> doRefresh());
-
-//        for (TableColumn allColumn : cus_addr.getAllColumns()) {
-//            if (allColumn.getText().equals("Тип адреса")) {
-//                allColumn.setSortable(false);
-//            }
-//            System.out.println("=====>" + allColumn.getText());
-//        }
     }
 
     private void initDataSet() {
@@ -91,14 +84,14 @@ public class CUS_ADDRController extends JInvFXBrowserController {
         }
     }
 
-    private void doFormResult(FormReturnEnum ok, JInvFXFormController<PCus_Addr> dctl) {
+    private void doFormResult(FormReturnEnum ok, JInvFXFormController dctl) {
         if (FormReturnEnum.RET_OK == ok) {
             switch (dctl.getFormMode()) {
                 case VM_INS:
-                    dsPcusAddr.insertRow(dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
+                    dsPcusAddr.insertRow((PCus_Addr) dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
                     break;
                 case VM_EDIT:
-                    dsPcusAddr.updateCurrentRow(dctl.getDataObject());
+                    dsPcusAddr.updateCurrentRow((PCus_Addr) dctl.getDataObject());
                     break;
                 case VM_DEL:
                     dsPcusAddr.removeCurrentRow();

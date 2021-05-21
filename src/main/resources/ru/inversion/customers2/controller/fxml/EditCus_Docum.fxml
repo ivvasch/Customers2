@@ -107,7 +107,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </GridPane.margin>
                 </JInvTextField>
-                <ComboBox fx:id="ADDR_TYPE" prefHeight="25.0" prefWidth="203.0" value="0 - Регистрации" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <ComboBox fx:id="ID_DOC_TP" prefHeight="25.0" prefWidth="203.0" value="0 - Регистрации" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </GridPane.margin>

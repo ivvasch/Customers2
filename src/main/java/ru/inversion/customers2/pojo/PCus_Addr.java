@@ -27,6 +27,7 @@ public class PCus_Addr extends IDMarkable implements Serializable {
     private String KV;
     private String ADDRESS;
     private String ADDRTYPE;
+    private Long ACT;
 
     public PCus_Addr() {
     }
@@ -43,10 +44,10 @@ public class PCus_Addr extends IDMarkable implements Serializable {
     }
 
     //    @Column(name = "ADDR_TYPE")
+
     public Long getADDR_TYPE() {
         return ADDR_TYPE;
     }
-
     @Column(name = "ADDRTYPE")
     public String getADDRTYPE() {
         if (getADDR_TYPE() == 0)
@@ -101,6 +102,10 @@ public class PCus_Addr extends IDMarkable implements Serializable {
                         + (getKV() != null ? getKV() : "") + ".");
     }
 
+
+    public Long getACT() {
+        return ACT;
+    }
     // =================== Сеттеры
 
     public void setICUSNUM(Long ICUSNUM) {
@@ -153,6 +158,10 @@ public class PCus_Addr extends IDMarkable implements Serializable {
 
     public void setADDRESS(String ADDRESS) {
         this.ADDRESS = ADDRESS;
+    }
+
+    public void setACT(Long ACT) {
+        this.ACT = ACT;
     }
 
     @Override

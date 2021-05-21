@@ -21,7 +21,7 @@ public class PCus_Docum extends IDMarkable implements Serializable {
     private String DOC_NUM;
     private LocalDate DOC_DATE;
     private String DOC_AGENCY;
-
+    private Long ACT;
 
     public PCus_Docum() {
     }
@@ -62,9 +62,12 @@ public class PCus_Docum extends IDMarkable implements Serializable {
         return DOC_AGENCY;
     }
 
+
+    public Long getACT() {
+        return ACT;
+    }
+
     // ================ сеттеры
-
-
     public void setICUSNUM(Long ICUSNUM) {
         this.ICUSNUM = ICUSNUM;
     }
@@ -91,6 +94,10 @@ public class PCus_Docum extends IDMarkable implements Serializable {
 
     public void setDOC_AGENCY(String DOC_AGENCY) {
         this.DOC_AGENCY = DOC_AGENCY;
+    }
+
+    public void setACT(Long ACT) {
+        this.ACT = ACT;
     }
 
     @Override
