@@ -6,12 +6,10 @@ import jfxtras.scene.control.LocalDateTextField;
 import ru.inversion.customers2.pojo.PCus_Docum;
 import ru.inversion.customers2.service.ServiceMap;
 import ru.inversion.fx.form.JInvFXBrowserController;
-import ru.inversion.fx.form.JInvFXFormController;
 import ru.inversion.fx.form.controls.JInvButton;
 import ru.inversion.fx.form.controls.JInvLongField;
 import ru.inversion.fx.form.controls.JInvTextField;
 
-import java.time.LocalDate;
 
 public class EditCus_DocumController extends JInvFXBrowserController {
 
