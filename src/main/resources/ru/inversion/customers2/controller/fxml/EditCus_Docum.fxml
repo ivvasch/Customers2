@@ -130,8 +130,8 @@
         </GridPane>
         <ButtonBar prefHeight="40.0" prefWidth="378.0">
             <buttons>
-                <Button mnemonicParsing="false" text="%Edit.Ok" />
-                <Button mnemonicParsing="false" text="%Edit.Cancell" />
+                <Button fx:id="btnOk" mnemonicParsing="false" text="%Edit.Ok" />
+                <Button fx:id="btnCancell" mnemonicParsing="false" text="%Edit.Cancell" />
             </buttons>
          <VBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" />
