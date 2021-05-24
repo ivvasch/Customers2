@@ -16,7 +16,7 @@ public class CustomersController extends JInvFXBrowserController {
     @FXML private Tab allCusTab;
     // контроллеры вкладок
     @FXML private CUSController cusTabPageController;
-    @FXML private CUS_ADDRController cusAddrTabPageController;
+    @FXML private CUSADDRController cusAddrTabPageController;
 //    @FXML private CUS_CONTACTSController cus_contactsController;
     @FXML private CUS_DOCUMController cusDocumTabPageController;
 //    @FXML private ALL_CUSController all_cusController;

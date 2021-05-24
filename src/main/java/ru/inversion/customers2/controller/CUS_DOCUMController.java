@@ -23,7 +23,7 @@ public class CUS_DOCUMController extends JInvFXBrowserController {
 
     @Override
     protected void init() throws Exception {
-        setTitle("Таблица Документы кклиента");
+        setTitle("Таблица Документы клиента");
         initDataSet();
         DSFXAdapter<PCus_Docum> dsfx = DSFXAdapter.bind(dsPcus, cus_doc, null, false);
 //        dsfx.setEnableFilter(true);

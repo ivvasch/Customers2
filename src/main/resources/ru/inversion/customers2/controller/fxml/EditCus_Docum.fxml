@@ -103,15 +103,20 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </GridPane.margin>
                 </JInvTextField>
-                <ComboBox fx:id="ID_DOC_TP" prefHeight="25.0" prefWidth="203.0" value="0 - Регистрации" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <ComboBox fx:id="ID_DOC_TP" prefHeight="25.0" prefWidth="203.0" value="21 - Паспорт гр. РФ" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </GridPane.margin>
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="0 - Регистрации" />
-                            <String fx:value="1 - Почтовый" />
-                            <String fx:value="2 - Фактический" />
+                            <String fx:value="21 - Паспорт гр. РФ" />
+                            <String fx:value="03 - Св-во о рождении" />
+                            <String fx:value="07 - Военный билет" />
+                            <String fx:value="10 - Паспорт иностранного гр." />
+                            <String fx:value="12 - ВНЖ" />
+                            <String fx:value="13 - Удостоверение беженца" />
+                            <String fx:value="14 - Временное удостоверение гр. РФ" />
+                            <String fx:value="15 - РВП" />
                         </FXCollections>
                     </items>
                 </ComboBox>

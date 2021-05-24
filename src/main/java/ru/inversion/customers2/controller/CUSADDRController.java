@@ -1,7 +1,7 @@
 package ru.inversion.customers2.controller;
 
 import javafx.fxml.FXML;
-import ru.inversion.customers2.pojo.PCus_Addr;
+import ru.inversion.customers2.pojo.PCusAddr;
 import ru.inversion.dataset.IDataSet;
 import ru.inversion.dataset.XXIDataSet;
 import ru.inversion.dataset.fx.DSFXAdapter;
@@ -14,20 +14,20 @@ import ru.inversion.fx.form.controls.JInvToolBar;
 import ru.inversion.meta.EntityMetadataFactory;
 import ru.inversion.meta.IEntityProperty;
 
-public class CUS_ADDRController extends JInvFXBrowserController {
+public class CUSADDRController extends JInvFXBrowserController {
 
     @FXML
     private JInvToolBar toolBarAddr;
     @FXML
-    private JInvTable<PCus_Addr> cus_addr;
-    private XXIDataSet<PCus_Addr> dsPcusAddr = new XXIDataSet<>();
+    private JInvTable<PCusAddr> cus_addr;
+    private XXIDataSet<PCusAddr> dsPcusAddr = new XXIDataSet<>();
 
 
     @Override
     protected void init() throws Exception {
         setTitle("Таблица Cus_ADDR");
         initDataSet();
-        DSFXAdapter<PCus_Addr> dsfx = DSFXAdapter.bind(dsPcusAddr, cus_addr, null, false);
+        DSFXAdapter<PCusAddr> dsfx = DSFXAdapter.bind(dsPcusAddr, cus_addr, null, false);
 //        dsfx.setEnableFilter(true);
         initToolBar();
         doRefresh();
@@ -42,7 +42,7 @@ public class CUS_ADDRController extends JInvFXBrowserController {
 
     private void initDataSet() {
         dsPcusAddr.setTaskContext(getTaskContext());
-        dsPcusAddr.setRowClass(PCus_Addr.class);
+        dsPcusAddr.setRowClass(PCusAddr.class);
     }
 
     private void initToolBar() {
@@ -55,17 +55,17 @@ public class CUS_ADDRController extends JInvFXBrowserController {
     }
 
     private void doOperation(FormModeEnum mode) {
-        PCus_Addr cus_addr = null;
+        PCusAddr cus_addr = null;
         switch (mode) {
             case VM_INS:
-                cus_addr = new PCus_Addr();
+                cus_addr = new PCusAddr();
                 break;
             case VM_NONE:
                 if (dsPcusAddr.getCurrentRow() == null)
                     break;
                 mode = FormModeEnum.VM_INS;
-                cus_addr = new PCus_Addr();
-                for (IEntityProperty<PCus_Addr, ?> value : EntityMetadataFactory.getEntityMetaData(PCus_Addr.class).getPropertiesMap().values())
+                cus_addr = new PCusAddr();
+                for (IEntityProperty<PCusAddr, ?> value : EntityMetadataFactory.getEntityMetaData(PCusAddr.class).getPropertiesMap().values())
                     if (!(value.isTransient() || value.isId()))
                         value.invokeSetter(cus_addr, value.invokeGetter(dsPcusAddr.getCurrentRow()));
                 break;
@@ -76,7 +76,7 @@ public class CUS_ADDRController extends JInvFXBrowserController {
                 break;
         }
         if (cus_addr != null) {
-            new FXFormLauncher<>(this, EditCus_AddrController.class)
+            new FXFormLauncher<>(this, EditCusAddrController.class)
                     .dataObject(cus_addr)
                     .dialogMode(mode)
                     .callback(this::doFormResult)
@@ -88,10 +88,10 @@ public class CUS_ADDRController extends JInvFXBrowserController {
         if (FormReturnEnum.RET_OK == ok) {
             switch (dctl.getFormMode()) {
                 case VM_INS:
-                    dsPcusAddr.insertRow((PCus_Addr) dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
+                    dsPcusAddr.insertRow((PCusAddr) dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
                     break;
                 case VM_EDIT:
-                    dsPcusAddr.updateCurrentRow((PCus_Addr) dctl.getDataObject());
+                    dsPcusAddr.updateCurrentRow((PCusAddr) dctl.getDataObject());
                     break;
                 case VM_DEL:
                     dsPcusAddr.removeCurrentRow();

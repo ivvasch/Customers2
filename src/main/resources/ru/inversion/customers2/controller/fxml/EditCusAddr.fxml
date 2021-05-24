@@ -15,7 +15,7 @@
 <?import ru.inversion.fx.form.controls.JInvLongField?>
 <?import ru.inversion.fx.form.controls.JInvTextField?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.inversion.customers2.controller.EditCus_AddrController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.inversion.customers2.controller.EditCusAddrController">
     <children>
         <JInvLabel text="Cus_AddrTitle">
             <font>

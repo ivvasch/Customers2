@@ -2,15 +2,14 @@ package ru.inversion.customers2.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import ru.inversion.customers2.pojo.PCus_Addr;
+import ru.inversion.customers2.pojo.PCusAddr;
 import ru.inversion.customers2.service.ServiceMap;
 import ru.inversion.fx.form.JInvFXBrowserController;
-import ru.inversion.fx.form.JInvFXFormController;
 import ru.inversion.fx.form.controls.JInvButton;
 import ru.inversion.fx.form.controls.JInvLongField;
 import ru.inversion.fx.form.controls.JInvTextField;
 
-public class EditCus_AddrController extends JInvFXBrowserController {
+public class EditCusAddrController extends JInvFXBrowserController {
 
     @FXML private JInvLongField ICUSNUM;
     @FXML private ComboBox ADDR_TYPE;
@@ -25,12 +24,12 @@ public class EditCus_AddrController extends JInvFXBrowserController {
     @FXML private JInvButton btnOk;
     @FXML private JInvButton btnCancell;
     private Long ACT;
-    private PCus_Addr cusadr;
+    private PCusAddr cusadr;
 
     @Override
     protected void init() throws Exception {
         super.init();
-        cusadr = (PCus_Addr) getDataObject();
+        cusadr = (PCusAddr) getDataObject();
         btnOk.setOnAction((event) -> {
             switch (getFormMode()) {
                 case VM_INS:
@@ -46,21 +45,21 @@ public class EditCus_AddrController extends JInvFXBrowserController {
                     setACT(3L);
                     break;
             }
-        });
-        cusadr.setICUSNUM(ICUSNUM.getValue() == null ? 0 : ICUSNUM.getValue());
-        cusadr.setADDR_TYPE(Long.valueOf(ADDR_TYPE.getValue().toString().substring(0, 1)));
-        cusadr.setCOUNTRY(COUNTRY.getText());
-        cusadr.setPOST_INDEX(POST_INDEX.getText());
-        cusadr.setCITY(CITY.getText());
-        cusadr.setINFR_TYPE(INFR_TYPE.getText());
-        cusadr.setINFR_NAME(INFR_NAME.getText());
-        cusadr.setDOM(DOM.getText());
-        cusadr.setKORP(KORP.getText());
-        cusadr.setKV(KV.getText());
-        cusadr.setACT(getACT());
+            cusadr.setICUSNUM(ICUSNUM.getValue() == null ? 0 : ICUSNUM.getValue());
+            cusadr.setADDR_TYPE(Long.valueOf(ADDR_TYPE.getValue().toString().substring(0, 1)));
+            cusadr.setCOUNTRY(COUNTRY.getText());
+            cusadr.setPOST_INDEX(POST_INDEX.getText());
+            cusadr.setCITY(CITY.getText());
+            cusadr.setINFR_TYPE(INFR_TYPE.getText());
+            cusadr.setINFR_NAME(INFR_NAME.getText());
+            cusadr.setDOM(DOM.getText());
+            cusadr.setKORP(KORP.getText());
+            cusadr.setKV(KV.getText());
+            cusadr.setACT(getACT());
 
-        ServiceMap.servMap(cusadr, "ivv_cus_addr_ins", this);
-        this.close();
+            ServiceMap.servMap(cusadr, "ivv_cus_addr_ins", this);
+            this.close();
+        });
 
         btnCancell.setOnAction(event -> {
             this.close();

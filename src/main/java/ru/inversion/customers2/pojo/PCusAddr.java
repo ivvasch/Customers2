@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Table(name = "cus_addr")
 @NamedNativeQuery(name = "ru.inversion.customers2.pojo.PCus_Addr", query = "SELECT icusnum, id_addr, addr_type, country, post_index, city, infr_type, " +
         "infr_name, dom, korp, kv FROM cus_addr")
-public class PCus_Addr extends IDMarkable implements Serializable {
+public class PCusAddr extends IDMarkable implements Serializable {
 
     private static final Long serialVersionUID = 17_05_2021_12_00L;
 
@@ -29,7 +29,7 @@ public class PCus_Addr extends IDMarkable implements Serializable {
     private String ADDRTYPE;
     private Long ACT;
 
-    public PCus_Addr() {
+    public PCusAddr() {
     }
 
     @Id
