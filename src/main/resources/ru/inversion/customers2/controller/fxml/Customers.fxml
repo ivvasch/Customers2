@@ -12,7 +12,7 @@
                 <fx:include fx:id="cusTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUS.fxml" />
             </Tab>
             <Tab fx:id="cusDocumTab" text="CUS_DOCUM">
-                <fx:include fx:id="cusDocumTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUS_DOCUM.fxml" />
+                <fx:include fx:id="cusDocumTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUSDOCUM.fxml" />
             </Tab>
             <Tab fx:id="cusAddrTab" text="CUS_ADDR">
                 <fx:include fx:id="cusAddrTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUSADDR.fxml" />

@@ -2,6 +2,9 @@ package ru.inversion.customers2.controller;
 
 import javafx.fxml.FXML;
 import ru.inversion.customers2.pojo.PCusAddr;
+import ru.inversion.customers2.pojo.PCusDocum;
+import ru.inversion.customers2.service.AllDataSet;
+import ru.inversion.dataset.DataLinkBuilder;
 import ru.inversion.dataset.IDataSet;
 import ru.inversion.dataset.XXIDataSet;
 import ru.inversion.dataset.fx.DSFXAdapter;
@@ -20,11 +23,12 @@ public class CUSADDRController extends JInvFXBrowserController {
     private JInvToolBar toolBarAddr;
     @FXML
     private JInvTable<PCusAddr> cus_addr;
-    private XXIDataSet<PCusAddr> dsPcusAddr = new XXIDataSet<>();
+    private XXIDataSet<PCusAddr> dsPcusAddr;
+    private AllDataSet dataSet;
 
 
-    @Override
-    protected void init() throws Exception {
+    protected void init(AllDataSet dataSet) throws Exception {
+        this.dataSet = dataSet;
         setTitle("Таблица Cus_ADDR");
         initDataSet();
         DSFXAdapter<PCusAddr> dsfx = DSFXAdapter.bind(dsPcusAddr, cus_addr, null, false);
@@ -41,8 +45,9 @@ public class CUSADDRController extends JInvFXBrowserController {
     }
 
     private void initDataSet() {
-        dsPcusAddr.setTaskContext(getTaskContext());
-        dsPcusAddr.setRowClass(PCusAddr.class);
+        dataSet.setCusaddrController(this);
+        dsPcusAddr = dataSet.getDsPcusAddr();
+//        DataLinkBuilder.linkDataSet(dataSet.getDsPcusAddr(), /* внести геттер датасет следующей таблицы */, PCusAddr::getICUSNUM, "ICUSNUM");
     }
 
     private void initToolBar() {

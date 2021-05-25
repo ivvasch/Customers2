@@ -67,12 +67,13 @@
     <expression name="ivv_cus_doc_ins" lang="PL/SQL">
         <script><![CDATA[
         BEGIN
-          IVV_CUS_PACKAGE.ivv_cus_doc_ins(ivv_icusnum    =>   :ICUSNUM,
+          IVV_CUS_PACKAGE.ivv_cus_doc_ins(ivv_icusnum    =>    :ICUSNUM,
                                           ivv_id_doc_tp  =>    :ID_DOC_TP,
                                           ivv_doc_ser    =>    :DOC_SER,
                                           ivv_doc_num    =>    :DOC_NUM,
                                           ivv_doc_date   =>    :DOC_DATE,
                                           ivv_doc_agency =>    :DOC_AGENCY,
+                                          ivv_pref       =>    :PREF,
                                           ivv_act        =>    :ACT,
                                           ivv_err        =>    :ERR,
                                           ivv_res        =>    :RES);
@@ -80,11 +81,12 @@
         ]]></script>
         <parameters>
             <parameter name="icusnum"     mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
-            <parameter name="id_doc_tp"   mode="IN" sqlType="BIGINT"      javaType="Combobox"         defaultValue=""/>
+            <parameter name="id_doc_tp"   mode="IN" sqlType="BIGINT"      javaType="Combobox"     defaultValue=""/>
             <parameter name="doc_ser"     mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
             <parameter name="doc_num"     mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
-            <parameter name="doc_date"    mode="IN" sqlType="DATE"        javaType="LocalDate"       defaultValue=""/>
+            <parameter name="doc_date"    mode="IN" sqlType="DATE"        javaType="LocalDate"    defaultValue=""/>
             <parameter name="doc_agency"  mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
+            <parameter name="pref"        mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
             <parameter name="act"         mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
             <parameter name="err"         mode="OUT" sqlType="VARCHAR"    javaType="String"       defaultValue=""/>
             <parameter name="res"         mode="OUT" sqlType="BIGINT"     javaType="Long"         defaultValue=""/>

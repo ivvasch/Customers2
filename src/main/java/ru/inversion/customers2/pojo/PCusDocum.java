@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Table(name = "cus_doc")
 @NamedNativeQuery(name = "ru.inversion.customers2.pojo.PCus_Docum", query = "SELECT icusnum, id_doc, id_doc_tp, doc_ser, doc_num," +
         "doc_date, doc_agency FROM cus_docum")
-public class PCus_Docum extends IDMarkable implements Serializable {
+public class PCusDocum extends IDMarkable implements Serializable {
 
     private static final Long serialVersionUID = 18_05_2021_09_44L;
 
@@ -21,9 +21,12 @@ public class PCus_Docum extends IDMarkable implements Serializable {
     private String DOC_NUM;
     private LocalDate DOC_DATE;
     private String DOC_AGENCY;
+
+    private String PREF;
+
     private Long ACT;
 
-    public PCus_Docum() {
+    public PCusDocum() {
     }
 
     @Id
@@ -67,7 +70,15 @@ public class PCus_Docum extends IDMarkable implements Serializable {
         return ACT;
     }
 
+    public String getPREF() {
+        return "Y";
+    }
+
     // ================ сеттеры
+
+    public void setPREF(String PREF) {
+        this.PREF = PREF;
+    }
     public void setICUSNUM(Long ICUSNUM) {
         this.ICUSNUM = ICUSNUM;
     }

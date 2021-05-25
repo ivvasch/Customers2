@@ -1,7 +1,9 @@
 package ru.inversion.customers2.controller;
 
 import javafx.fxml.FXML;
-import ru.inversion.customers2.pojo.PCus_Docum;
+import ru.inversion.customers2.pojo.PCusDocum;
+import ru.inversion.customers2.service.AllDataSet;
+import ru.inversion.dataset.DataLinkBuilder;
 import ru.inversion.dataset.IDataSet;
 import ru.inversion.dataset.XXIDataSet;
 import ru.inversion.dataset.fx.DSFXAdapter;
@@ -14,18 +16,19 @@ import ru.inversion.fx.form.controls.JInvToolBar;
 import ru.inversion.meta.EntityMetadataFactory;
 import ru.inversion.meta.IEntityProperty;
 
-public class CUS_DOCUMController extends JInvFXBrowserController {
+public class CUSDOCUMController extends JInvFXBrowserController {
 
     @FXML private JInvToolBar toolBarDocum;
-    @FXML private JInvTable<PCus_Docum> cus_doc;
-    private XXIDataSet<PCus_Docum> dsPcus = new XXIDataSet<>();
+    @FXML private JInvTable<PCusDocum> cus_doc;
+    private XXIDataSet<PCusDocum> dsPcusDoc = new XXIDataSet<>();
+    private AllDataSet dataSet;
 
 
-    @Override
-    protected void init() throws Exception {
+    protected void init(AllDataSet dataSet) throws Exception {
+        this.dataSet = dataSet;
         setTitle("Таблица Документы клиента");
         initDataSet();
-        DSFXAdapter<PCus_Docum> dsfx = DSFXAdapter.bind(dsPcus, cus_doc, null, false);
+        DSFXAdapter<PCusDocum> dsfx = DSFXAdapter.bind(dsPcusDoc, cus_doc, null, false);
 //        dsfx.setEnableFilter(true);
         initToolBar();
         doRefresh();
@@ -39,8 +42,9 @@ public class CUS_DOCUMController extends JInvFXBrowserController {
     }
 
     private void initDataSet() {
-        dsPcus.setTaskContext(getTaskContext());
-        dsPcus.setRowClass(PCus_Docum.class);
+        dataSet.setDocController(this);
+        dsPcusDoc = dataSet.getDsPcusDoc();
+        DataLinkBuilder.linkDataSet(dataSet.getDsPcusDoc(), dataSet.getDsPcusAddr(), PCusDocum::getICUSNUM, "ICUSNUM");
     }
 
     private void initToolBar() {
@@ -53,30 +57,30 @@ public class CUS_DOCUMController extends JInvFXBrowserController {
     }
 
     private void doOperation(FormModeEnum mode) {
-        PCus_Docum customers = null;
+        PCusDocum customers = null;
         switch (mode) {
             case VM_INS:
-                customers = new PCus_Docum();
+                customers = new PCusDocum();
                 break;
             case VM_NONE:
-                if (dsPcus.getCurrentRow() == null)
+                if (dsPcusDoc.getCurrentRow() == null)
                     break;
                     mode = FormModeEnum.VM_INS;
-                    customers = new PCus_Docum();
-                    for (IEntityProperty<PCus_Docum, ?> value : EntityMetadataFactory.getEntityMetaData(PCus_Docum.class)
+                    customers = new PCusDocum();
+                    for (IEntityProperty<PCusDocum, ?> value : EntityMetadataFactory.getEntityMetaData(PCusDocum.class)
                             .getPropertiesMap().values()) {
                         if (!(value.isTransient() || value.isId()))
-                            value.invokeSetter(customers, value.invokeGetter(dsPcus.getCurrentRow()));
+                            value.invokeSetter(customers, value.invokeGetter(dsPcusDoc.getCurrentRow()));
                         break;
                     }
             case VM_EDIT:
             case VM_SHOW:
             case VM_DEL:
-                customers = dsPcus.getCurrentRow();
+                customers = dsPcusDoc.getCurrentRow();
                 break;
         }
         if (customers != null) {
-            new FXFormLauncher<>(this, EditCus_DocumController.class)
+            new FXFormLauncher<>(this, EditCusDocumController.class)
                     .dataObject(customers)
                     .dialogMode(mode)
                     .initProperties(getInitProperties())
@@ -89,13 +93,13 @@ public class CUS_DOCUMController extends JInvFXBrowserController {
         if (FormReturnEnum.RET_OK == ok) {
             switch (dctl.getFormMode()) {
                 case VM_INS:
-                    dsPcus.insertRow((PCus_Docum) dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
+                    dsPcusDoc.insertRow((PCusDocum) dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
                     break;
                 case VM_EDIT:
-                    dsPcus.updateCurrentRow((PCus_Docum) dctl.getDataObject());
+                    dsPcusDoc.updateCurrentRow((PCusDocum) dctl.getDataObject());
                     break;
                 case VM_DEL:
-                    dsPcus.removeCurrentRow();
+                    dsPcusDoc.removeCurrentRow();
                     break;
                 default:
                     break;

@@ -1,8 +1,11 @@
 package ru.inversion.customers2.controller;
 
 import javafx.fxml.FXML;
-import org.apache.poi.ss.formula.functions.T;
+import ru.inversion.customers2.pojo.PCusAddr;
+import ru.inversion.customers2.pojo.PCusDocum;
 import ru.inversion.customers2.pojo.PCustomers;
+import ru.inversion.customers2.service.AllDataSet;
+import ru.inversion.dataset.DataLinkBuilder;
 import ru.inversion.dataset.IDataSet;
 import ru.inversion.dataset.XXIDataSet;
 import ru.inversion.dataset.fx.DSFXAdapter;
@@ -15,19 +18,18 @@ import ru.inversion.fx.form.controls.JInvToolBar;
 import ru.inversion.meta.EntityMetadataFactory;
 import ru.inversion.meta.IEntityProperty;
 
-import java.util.function.BiConsumer;
-
 public class CUSController extends JInvFXBrowserController {
 
     @FXML private JInvToolBar toolBar;
     @FXML private JInvTable<PCustomers> customers;
-    private XXIDataSet<PCustomers> dsPcus = new XXIDataSet<>();
+    private XXIDataSet<PCustomers> dsPcus;
+    private AllDataSet dataSet;
 
 
-    @Override
-    protected void init() throws Exception {
-        setTitle("Таблица Customers");
+    protected void init(AllDataSet dataSet) throws Exception {
+        this.dataSet = dataSet;
         initDataSet();
+        setTitle("Таблица Customers");
         DSFXAdapter<PCustomers> dsfx = DSFXAdapter.bind(dsPcus, customers, null, false);
 //        dsfx.setEnableFilter(true);
         initToolBar();
@@ -42,9 +44,11 @@ public class CUSController extends JInvFXBrowserController {
     }
 
     private void initDataSet() {
-        dsPcus.setTaskContext(getTaskContext());
-        dsPcus.setRowClass(PCustomers.class);
+        dataSet.setCusController(this);
+        dsPcus = dataSet.getDsPcus();
+        DataLinkBuilder.linkDataSet(dataSet.getDsPcus(), dataSet.getDsPcusDoc(), PCustomers::getICUSNUM, "ICUSNUM");
     }
+
 
     private void initToolBar() {
         toolBar.setStandartActions(ActionFactory.ActionTypeEnum.CREATE,
@@ -56,8 +60,6 @@ public class CUSController extends JInvFXBrowserController {
     }
 
     private void doOperation(FormModeEnum mode) {
-//        EditCustomersController controller = new EditCustomersController();
-//        controller.setCustomers(dsPcus.getCurrentRow());
         PCustomers pCustomers = null;
         switch (mode) {
             case VM_INS:
