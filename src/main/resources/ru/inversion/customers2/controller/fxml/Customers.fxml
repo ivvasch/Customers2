@@ -18,7 +18,7 @@
                 <fx:include fx:id="cusAddrTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUSADDR.fxml" />
             </Tab>
             <Tab fx:id="cusContactsTab" text="CUS_CONTACTS">
-                <fx:include fx:id="cusContactsTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUS_CONTACTS.fxml" />
+                <fx:include fx:id="cusContactsTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUSCONTACTS.fxml" />
             </Tab>
             <Tab fx:id="allCusTab" text="ALL_CUS">
                 <fx:include fx:id="allCusTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="ALL_CUS.fxml" />
