@@ -1,7 +1,5 @@
 package ru.inversion.customers2.pojo;
 
-import javafx.fxml.FXML;
-import org.omg.CORBA.PRIVATE_MEMBER;
 import ru.inversion.dataset.mark.IDMarkable;
 
 import javax.persistence.*;

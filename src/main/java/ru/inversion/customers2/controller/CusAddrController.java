@@ -3,6 +3,7 @@ package ru.inversion.customers2.controller;
 import javafx.fxml.FXML;
 import ru.inversion.customers2.pojo.PCusAddr;
 import ru.inversion.customers2.pojo.PCusDocum;
+import ru.inversion.customers2.pojo.PCustomers;
 import ru.inversion.customers2.service.AllDataSet;
 import ru.inversion.dataset.DataLinkBuilder;
 import ru.inversion.dataset.IDataSet;
@@ -47,7 +48,7 @@ public class CusAddrController extends JInvFXBrowserController {
     private void initDataSet() {
         dataSet.setCusaddrController(this);
         dsPcusAddr = dataSet.getDsPcusAddr();
-        DataLinkBuilder.linkDataSet(dataSet.getDsPcusAddr(), dataSet.getDsPcusContacts(), PCusAddr::getICUSNUM, "ICUSNUM");
+        DataLinkBuilder.linkDataSet(dataSet.getDsPcus(), dataSet.getDsPcusContacts(), PCustomers::getICUSNUM, "ICUSNUM");
     }
 
     private void initToolBar() {

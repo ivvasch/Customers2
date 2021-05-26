@@ -1,6 +1,5 @@
 package ru.inversion.customers2.pojo;
 
-import javafx.fxml.FXML;
 import ru.inversion.dataset.mark.IDMarkable;
 
 import javax.persistence.*;

@@ -1,7 +1,6 @@
 package ru.inversion.customers2.controller;
 
 import javafx.fxml.FXML;
-import ru.inversion.customers2.pojo.PCusAddr;
 import ru.inversion.customers2.pojo.PCusContacts;
 import ru.inversion.customers2.pojo.PCustomers;
 import ru.inversion.customers2.service.AllDataSet;
@@ -28,7 +27,7 @@ public class CusContactsController extends JInvFXBrowserController {
 
     protected void init(AllDataSet dataSet) throws Exception {
         this.dataSet = dataSet;
-        setTitle("Таблица AllCus");
+        setTitle("Таблица Customers");
         initDataSet();
         DSFXAdapter<PCusContacts> dsfx = DSFXAdapter.bind(dsPcusContacts, cuscontacts, null, false);
 //        dsfx.setEnableFilter(true);
@@ -46,7 +45,7 @@ public class CusContactsController extends JInvFXBrowserController {
     private void initDataSet() {
         dataSet.setCuscontactsController(this);
         dsPcusContacts = dataSet.getDsPcusContacts();
-        DataLinkBuilder.linkDataSet(dataSet.getDsPcusContacts(), dataSet.getDsAllCus(), PCusContacts::getICUSNUM, "ICUSNUM");
+        DataLinkBuilder.linkDataSet(dataSet.getDsPcus(), dataSet.getDsAllCus(), PCustomers::getICUSNUM, "ICUSNUM");
     }
 
     private void initToolBar() {

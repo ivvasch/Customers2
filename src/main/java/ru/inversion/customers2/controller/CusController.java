@@ -1,8 +1,6 @@
 package ru.inversion.customers2.controller;
 
 import javafx.fxml.FXML;
-import ru.inversion.customers2.pojo.PCusAddr;
-import ru.inversion.customers2.pojo.PCusDocum;
 import ru.inversion.customers2.pojo.PCustomers;
 import ru.inversion.customers2.service.AllDataSet;
 import ru.inversion.dataset.DataLinkBuilder;

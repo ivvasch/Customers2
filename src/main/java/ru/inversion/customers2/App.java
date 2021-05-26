@@ -1,18 +1,14 @@
 package ru.inversion.customers2;
 
-import java.util.Collections;
-import java.util.Map;
-import java.util.ResourceBundle;
-import javafx.application.Platform;
-import javafx.stage.WindowEvent;
 import ru.inversion.annotation.StartMethod;
 import ru.inversion.customers2.controller.CustomersController;
 import ru.inversion.fx.app.BaseApp;
-import ru.inversion.fx.app.es.JInvErrorService;
 import ru.inversion.fx.form.FXFormLauncher;
-import ru.inversion.fx.form.JInvFXBrowserController;
 import ru.inversion.fx.form.ViewContext;
 import ru.inversion.tc.TaskContext;
+
+import java.util.Collections;
+import java.util.Map;
 
 public class App extends BaseApp
 {

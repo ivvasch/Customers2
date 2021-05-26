@@ -23,10 +23,10 @@ public class AllDataSet {
 
     public void setCusController(CusController cusController) {
         this.cusController = cusController;
-    }
-    public XXIDataSet<PCustomers> getDsPcus() {
         dsPcus.setTaskContext(getCusController().getTaskContext());
         dsPcus.setRowClass(PCustomers.class);
+    }
+    public XXIDataSet<PCustomers> getDsPcus() {
         return dsPcus;
     }
 
@@ -38,11 +38,11 @@ public class AllDataSet {
 
     public void setDocController(CusDocumController docController) {
         this.docController = docController;
+        dsPcusDoc.setTaskContext(getDocController().getTaskContext());
+        dsPcusDoc.setRowClass(PCusDocum.class);
     }
 
     public XXIDataSet<PCusDocum> getDsPcusDoc() {
-        dsPcusDoc.setTaskContext(getDocController().getTaskContext());
-        dsPcusDoc.setRowClass(PCusDocum.class);
         return dsPcusDoc;
     }
 
@@ -53,11 +53,11 @@ public class AllDataSet {
 //===================================== датасет PCusAddr
     public void setCusaddrController(CusAddrController cusaddrController) {
         this.cusaddrController = cusaddrController;
+        dsPcusAddr.setTaskContext(getCusaddrController().getTaskContext());
+        dsPcusAddr.setRowClass(PCusAddr.class);
     }
 
     public XXIDataSet<PCusAddr> getDsPcusAddr() {
-        dsPcusAddr.setTaskContext(getCusaddrController().getTaskContext());
-        dsPcusAddr.setRowClass(PCusAddr.class);
         return dsPcusAddr;
     }
 
@@ -68,11 +68,11 @@ public class AllDataSet {
 //====================================== датасет PCusContacts
     public void setCuscontactsController(CusContactsController cuscontactsController) {
         this.cuscontactsController = cuscontactsController;
+        dsPcusContacts.setTaskContext(getCuscontactsController().getTaskContext());
+        dsPcusContacts.setRowClass(PCusContacts.class);
     }
 
     public XXIDataSet<PCusContacts> getDsPcusContacts() {
-        dsPcusContacts.setTaskContext(getCuscontactsController().getTaskContext());
-        dsPcusContacts.setRowClass(PCusContacts.class);
         return dsPcusContacts;
     }
 
