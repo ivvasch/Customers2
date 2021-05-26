@@ -17,7 +17,7 @@ import ru.inversion.fx.form.controls.JInvToolBar;
 import ru.inversion.meta.EntityMetadataFactory;
 import ru.inversion.meta.IEntityProperty;
 
-public class CUSADDRController extends JInvFXBrowserController {
+public class CusAddrController extends JInvFXBrowserController {
 
     @FXML
     private JInvToolBar toolBarAddr;

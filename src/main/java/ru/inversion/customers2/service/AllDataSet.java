@@ -1,14 +1,7 @@
 package ru.inversion.customers2.service;
 
-import ru.inversion.customers2.controller.CUSADDRController;
-import ru.inversion.customers2.controller.CUSCONTACTSController;
-import ru.inversion.customers2.controller.CUSController;
-import ru.inversion.customers2.controller.CUSDOCUMController;
-import ru.inversion.customers2.pojo.PCusAddr;
-import ru.inversion.customers2.pojo.PCusContacts;
-import ru.inversion.customers2.pojo.PCusDocum;
-import ru.inversion.customers2.pojo.PCustomers;
-import ru.inversion.dataset.DataLinkBuilder;
+import ru.inversion.customers2.controller.*;
+import ru.inversion.customers2.pojo.*;
 import ru.inversion.dataset.XXIDataSet;
 
 public class AllDataSet {
@@ -16,18 +9,19 @@ public class AllDataSet {
     private XXIDataSet<PCusDocum> dsPcusDoc = new XXIDataSet<>();
     private XXIDataSet<PCusAddr> dsPcusAddr = new XXIDataSet<>();
     private XXIDataSet<PCusContacts> dsPcusContacts = new XXIDataSet<>();
-    private CUSController cusController;
-    private CUSDOCUMController docController;
-    private CUSADDRController cusaddrController;
-
-    private CUSCONTACTSController cuscontactsController;
+    private XXIDataSet<PAllCus> dsAllCus = new XXIDataSet<>();
+    private CusController cusController;
+    private CusDocumController docController;
+    private CusAddrController cusaddrController;
+    private CusContactsController cuscontactsController;
+    private AllCusController allCusController;
 
 //    public void init() {
 //        DataLinkBuilder.linkDataSet(getDsPcus(), getDsPcusDoc(), PCustomers::getICUSNUM, "ICUSNUM");
 //        DataLinkBuilder.linkDataSet(getDsPcus(), getDsPcusAddr(), PCustomers::getICUSNUM, "ICUSNUM");
 //    }
 
-    public void setCusController(CUSController cusController) {
+    public void setCusController(CusController cusController) {
         this.cusController = cusController;
     }
     public XXIDataSet<PCustomers> getDsPcus() {
@@ -36,13 +30,13 @@ public class AllDataSet {
         return dsPcus;
     }
 
-    public CUSController getCusController() {
+    public CusController getCusController() {
         return cusController;
     }
 
 //=========================== Датасет PCusDocum
 
-    public void setDocController(CUSDOCUMController docController) {
+    public void setDocController(CusDocumController docController) {
         this.docController = docController;
     }
 
@@ -52,12 +46,12 @@ public class AllDataSet {
         return dsPcusDoc;
     }
 
-    public CUSDOCUMController getDocController() {
+    public CusDocumController getDocController() {
         return docController;
     }
 
 //===================================== датасет PCusAddr
-    public void setCusaddrController(CUSADDRController cusaddrController) {
+    public void setCusaddrController(CusAddrController cusaddrController) {
         this.cusaddrController = cusaddrController;
     }
 
@@ -67,12 +61,12 @@ public class AllDataSet {
         return dsPcusAddr;
     }
 
-    public CUSADDRController getCusaddrController() {
+    public CusAddrController getCusaddrController() {
         return cusaddrController;
     }
 
 //====================================== датасет PCusContacts
-    public void setCuscontactsController(CUSCONTACTSController cuscontactsController) {
+    public void setCuscontactsController(CusContactsController cuscontactsController) {
         this.cuscontactsController = cuscontactsController;
     }
 
@@ -82,7 +76,23 @@ public class AllDataSet {
         return dsPcusContacts;
     }
 
-    public CUSCONTACTSController getCuscontactsController() {
+    public CusContactsController getCuscontactsController() {
         return cuscontactsController;
+    }
+
+//====================================== датасет PAllCus
+
+    public void setAllCusController(AllCusController allCusController) {
+        this.allCusController = allCusController;
+    }
+
+    public XXIDataSet<PAllCus> getDsAllCus() {
+        dsAllCus.setTaskContext(getAllCusController().getTaskContext());
+        dsAllCus.setRowClass(PAllCus.class);
+        return dsAllCus;
+    }
+
+    public AllCusController getAllCusController() {
+        return allCusController;
     }
 }

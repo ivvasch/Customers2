@@ -18,7 +18,7 @@ import ru.inversion.fx.form.controls.JInvToolBar;
 import ru.inversion.meta.EntityMetadataFactory;
 import ru.inversion.meta.IEntityProperty;
 
-public class CUSController extends JInvFXBrowserController {
+public class CusController extends JInvFXBrowserController {
 
     @FXML private JInvToolBar toolBar;
     @FXML private JInvTable<PCustomers> customers;

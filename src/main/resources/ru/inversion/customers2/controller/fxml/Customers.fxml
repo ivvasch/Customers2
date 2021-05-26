@@ -12,16 +12,16 @@
                 <fx:include fx:id="cusTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUS.fxml" />
             </Tab>
             <Tab fx:id="cusDocumTab" text="CUS_DOCUM">
-                <fx:include fx:id="cusDocumTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUSDOCUM.fxml" />
+                <fx:include fx:id="cusDocumTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CusDocum.fxml" />
             </Tab>
             <Tab fx:id="cusAddrTab" text="CUS_ADDR">
-                <fx:include fx:id="cusAddrTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUSADDR.fxml" />
+                <fx:include fx:id="cusAddrTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CusAddr.fxml" />
             </Tab>
             <Tab fx:id="cusContactsTab" text="CUS_CONTACTS">
-                <fx:include fx:id="cusContactsTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CUSCONTACTS.fxml" />
+                <fx:include fx:id="cusContactsTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="CusContacts.fxml" />
             </Tab>
             <Tab fx:id="allCusTab" text="ALL_CUS">
-                <fx:include fx:id="allCusTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="ALL_CUS.fxml" />
+                <fx:include fx:id="allCusTabPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" source="AllCus.fxml" />
             </Tab>
         </tabs>
       </TabPane>

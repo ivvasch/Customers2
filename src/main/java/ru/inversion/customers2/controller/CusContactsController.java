@@ -1,9 +1,11 @@
 package ru.inversion.customers2.controller;
 
 import javafx.fxml.FXML;
+import ru.inversion.customers2.pojo.PCusAddr;
 import ru.inversion.customers2.pojo.PCusContacts;
 import ru.inversion.customers2.pojo.PCustomers;
 import ru.inversion.customers2.service.AllDataSet;
+import ru.inversion.dataset.DataLinkBuilder;
 import ru.inversion.dataset.IDataSet;
 import ru.inversion.dataset.XXIDataSet;
 import ru.inversion.dataset.fx.DSFXAdapter;
@@ -16,7 +18,7 @@ import ru.inversion.fx.form.controls.JInvToolBar;
 import ru.inversion.meta.EntityMetadataFactory;
 import ru.inversion.meta.IEntityProperty;
 
-public class CUSCONTACTSController extends JInvFXBrowserController {
+public class CusContactsController extends JInvFXBrowserController {
 
     @FXML private JInvToolBar toolBar;
     @FXML private JInvTable<PCusContacts> cuscontacts;
@@ -26,7 +28,7 @@ public class CUSCONTACTSController extends JInvFXBrowserController {
 
     protected void init(AllDataSet dataSet) throws Exception {
         this.dataSet = dataSet;
-        setTitle("Таблица Customers");
+        setTitle("Таблица AllCus");
         initDataSet();
         DSFXAdapter<PCusContacts> dsfx = DSFXAdapter.bind(dsPcusContacts, cuscontacts, null, false);
 //        dsfx.setEnableFilter(true);
@@ -44,6 +46,7 @@ public class CUSCONTACTSController extends JInvFXBrowserController {
     private void initDataSet() {
         dataSet.setCuscontactsController(this);
         dsPcusContacts = dataSet.getDsPcusContacts();
+        DataLinkBuilder.linkDataSet(dataSet.getDsPcusContacts(), dataSet.getDsAllCus(), PCusContacts::getICUSNUM, "ICUSNUM");
     }
 
     private void initToolBar() {
