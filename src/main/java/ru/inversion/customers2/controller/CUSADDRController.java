@@ -47,7 +47,7 @@ public class CUSADDRController extends JInvFXBrowserController {
     private void initDataSet() {
         dataSet.setCusaddrController(this);
         dsPcusAddr = dataSet.getDsPcusAddr();
-//        DataLinkBuilder.linkDataSet(dataSet.getDsPcusAddr(), /* внести геттер датасет следующей таблицы */, PCusAddr::getICUSNUM, "ICUSNUM");
+        DataLinkBuilder.linkDataSet(dataSet.getDsPcusAddr(), dataSet.getDsPcusContacts(), PCusAddr::getICUSNUM, "ICUSNUM");
     }
 
     private void initToolBar() {

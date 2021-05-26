@@ -18,7 +18,7 @@ public class CustomersController extends JInvFXBrowserController {
     // контроллеры вкладок
     @FXML private CUSController cusTabPageController;
     @FXML private CUSADDRController cusAddrTabPageController;
-//    @FXML private CUS_CONTACTSController cus_contactsController;
+    @FXML private CUSCONTACTSController cusContactsTabPageController;
     @FXML private CUSDOCUMController cusDocumTabPageController;
     //    @FXML private ALL_CUSController all_cusController;
     private AllDataSet dataSet = new AllDataSet();
@@ -35,9 +35,9 @@ public class CustomersController extends JInvFXBrowserController {
         cusAddrTabPageController.setTaskContext(getTaskContext());
         cusAddrTabPageController.setTitle("Адреса клиентов");
 
-//        cus_contactsController.setViewContext(getViewContext());
-//        cus_contactsController.setTaskContext(getTaskContext());
-//        cus_contactsController.setTitle("Контакты клиента");
+        cusContactsTabPageController.setViewContext(getViewContext());
+        cusContactsTabPageController.setTaskContext(getTaskContext());
+        cusContactsTabPageController.setTitle("Контакты клиента");
 //
         cusDocumTabPageController.setViewContext(getViewContext());
         cusDocumTabPageController.setTaskContext(getTaskContext());
@@ -51,7 +51,7 @@ public class CustomersController extends JInvFXBrowserController {
          * идет от последнего Tab в форме к первому,
          * чтобы все датасеты подгрузились перед основной таблицей!
          */
-//        cus_contactsController.init();
+        cusContactsTabPageController.init(dataSet);
         cusAddrTabPageController.init(dataSet);
         cusDocumTabPageController.init(dataSet);
         cusTabPageController.init(dataSet);

@@ -3,10 +3,10 @@ package ru.inversion.customers2.controller;
 import javafx.fxml.FXML;
 import ru.inversion.customers2.pojo.PCusContacts;
 import ru.inversion.customers2.service.ServiceMap;
-import ru.inversion.dataset.XXIDataSet;
-import ru.inversion.dataset.fx.DSFXAdapter;
 import ru.inversion.fx.form.JInvFXBrowserController;
-import ru.inversion.fx.form.controls.*;
+import ru.inversion.fx.form.controls.JInvButton;
+import ru.inversion.fx.form.controls.JInvLongField;
+import ru.inversion.fx.form.controls.JInvTextField;
 
 public class EditCusContactsController extends JInvFXBrowserController {
 

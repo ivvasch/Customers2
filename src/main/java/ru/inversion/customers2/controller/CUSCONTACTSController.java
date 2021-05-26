@@ -1,7 +1,9 @@
 package ru.inversion.customers2.controller;
 
 import javafx.fxml.FXML;
+import ru.inversion.customers2.pojo.PCusContacts;
 import ru.inversion.customers2.pojo.PCustomers;
+import ru.inversion.customers2.service.AllDataSet;
 import ru.inversion.dataset.IDataSet;
 import ru.inversion.dataset.XXIDataSet;
 import ru.inversion.dataset.fx.DSFXAdapter;
@@ -17,30 +19,31 @@ import ru.inversion.meta.IEntityProperty;
 public class CUSCONTACTSController extends JInvFXBrowserController {
 
     @FXML private JInvToolBar toolBar;
-    @FXML private JInvTable<PCustomers> customers;
-    private XXIDataSet<PCustomers> dsPcus = new XXIDataSet<>();
+    @FXML private JInvTable<PCusContacts> cuscontacts;
+    private XXIDataSet<PCusContacts> dsPcusContacts;
+    AllDataSet dataSet;
 
 
-    @Override
-    protected void init() throws Exception {
+    protected void init(AllDataSet dataSet) throws Exception {
+        this.dataSet = dataSet;
         setTitle("Таблица Customers");
         initDataSet();
-        DSFXAdapter<PCustomers> dsfx = DSFXAdapter.bind(dsPcus, customers, null, false);
+        DSFXAdapter<PCusContacts> dsfx = DSFXAdapter.bind(dsPcusContacts, cuscontacts, null, false);
 //        dsfx.setEnableFilter(true);
         initToolBar();
         doRefresh();
-        customers.setToolBar(toolBar);
-        customers.setAction(ActionFactory.ActionTypeEnum.CREATE, a -> doOperation(FormModeEnum.VM_INS));
-        customers.setAction(ActionFactory.ActionTypeEnum.CREATE_BY, a -> doOperation(FormModeEnum.VM_NONE));
-        customers.setAction(ActionFactory.ActionTypeEnum.VIEW, a -> doOperation(FormModeEnum.VM_SHOW));
-        customers.setAction(ActionFactory.ActionTypeEnum.UPDATE, a -> doOperation(FormModeEnum.VM_EDIT));
-        customers.setAction(ActionFactory.ActionTypeEnum.DELETE, a -> doOperation(FormModeEnum.VM_DEL));
-        customers.setAction(ActionFactory.ActionTypeEnum.REFRESH, a -> doRefresh());
+        cuscontacts.setToolBar(toolBar);
+        cuscontacts.setAction(ActionFactory.ActionTypeEnum.CREATE, a -> doOperation(FormModeEnum.VM_INS));
+        cuscontacts.setAction(ActionFactory.ActionTypeEnum.CREATE_BY, a -> doOperation(FormModeEnum.VM_NONE));
+        cuscontacts.setAction(ActionFactory.ActionTypeEnum.VIEW, a -> doOperation(FormModeEnum.VM_SHOW));
+        cuscontacts.setAction(ActionFactory.ActionTypeEnum.UPDATE, a -> doOperation(FormModeEnum.VM_EDIT));
+        cuscontacts.setAction(ActionFactory.ActionTypeEnum.DELETE, a -> doOperation(FormModeEnum.VM_DEL));
+        cuscontacts.setAction(ActionFactory.ActionTypeEnum.REFRESH, a -> doRefresh());
     }
 
     private void initDataSet() {
-        dsPcus.setTaskContext(getTaskContext());
-        dsPcus.setRowClass(PCustomers.class);
+        dataSet.setCuscontactsController(this);
+        dsPcusContacts = dataSet.getDsPcusContacts();
     }
 
     private void initToolBar() {
@@ -53,30 +56,30 @@ public class CUSCONTACTSController extends JInvFXBrowserController {
     }
 
     private void doOperation(FormModeEnum mode) {
-        PCustomers customers = null;
+        PCusContacts customers = null;
         switch (mode) {
             case VM_INS:
-                customers = new PCustomers();
+                customers = new PCusContacts();
                 break;
             case VM_NONE:
-                if (dsPcus.getCurrentRow() == null)
+                if (dsPcusContacts.getCurrentRow() == null)
                     break;
                     mode = FormModeEnum.VM_INS;
-                    customers = new PCustomers();
-                    for (IEntityProperty<PCustomers, ?> value : EntityMetadataFactory.getEntityMetaData(PCustomers.class)
+                    customers = new PCusContacts();
+                    for (IEntityProperty<PCusContacts, ?> value : EntityMetadataFactory.getEntityMetaData(PCusContacts.class)
                             .getPropertiesMap().values()) {
                         if (!(value.isTransient() || value.isId()))
-                            value.invokeSetter(customers, value.invokeGetter(dsPcus.getCurrentRow()));
+                            value.invokeSetter(customers, value.invokeGetter(dsPcusContacts.getCurrentRow()));
                         break;
                     }
             case VM_EDIT:
             case VM_SHOW:
             case VM_DEL:
-                customers = dsPcus.getCurrentRow();
+                customers = dsPcusContacts.getCurrentRow();
                 break;
         }
         if (customers != null) {
-            new FXFormLauncher<>(this, EditCustomersController.class)
+            new FXFormLauncher<>(this, EditCusContactsController.class)
                     .dataObject(customers)
                     .dialogMode(mode)
                     .initProperties(getInitProperties())
@@ -84,51 +87,28 @@ public class CUSCONTACTSController extends JInvFXBrowserController {
                     .doModal();
 
         }
-
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(EditCustomersController.class.getResource("fxml/EditCustomers.fxml"));
-//
-//        Stage stage = new Stage();
-//        if (mode.equals("ins")) {
-//            PCustomers customers = new PCustomers();
-//            stage.setTitle("ins");
-//            stage.initModality(Modality.WINDOW_MODAL);
-//            stage.initOwner(getViewContext().getStageOrPrimaryStage());
-//            try {
-//                VBox vbox = loader.load();
-//                Scene scene = new Scene(vbox);
-//                stage.setScene(scene);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            EditCustomersController controller = loader.getController();
-//            controller.setDialogStage(stage);
-//            controller.setCustomers(customers);
-//        stage.showAndWait();
-//        }
-
     }
 
-    private void doFormResult(FormReturnEnum ok, JInvFXFormController<PCustomers> dctl) {
+    private void doFormResult(FormReturnEnum ok, JInvFXFormController<PCusContacts> dctl) {
         if (FormReturnEnum.RET_OK == ok) {
             switch (dctl.getFormMode()) {
                 case VM_INS:
-                    dsPcus.insertRow(dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
+                    dsPcusContacts.insertRow(dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
                     break;
                 case VM_EDIT:
-                    dsPcus.updateCurrentRow(dctl.getDataObject());
+                    dsPcusContacts.updateCurrentRow(dctl.getDataObject());
                     break;
                 case VM_DEL:
-                    dsPcus.removeCurrentRow();
+                    dsPcusContacts.removeCurrentRow();
                     break;
                 default:
                     break;
             }
         }
-        customers.requestFocus();
+        cuscontacts.requestFocus();
     }
 
     private void doRefresh() {
-        customers.executeQuery();
+        cuscontacts.executeQuery();
     }
 }
