@@ -79,7 +79,7 @@ public class AllCusController extends JInvFXBrowserController {
                 break;
         }
         if (customers != null) {
-            new FXFormLauncher<>(this, EditCustomersController.class)
+            new FXFormLauncher<>(this, EditAllCusController.class)
                     .dataObject(customers)
                     .dialogMode(mode)
                     .initProperties(getInitProperties())

@@ -24,13 +24,13 @@
                   <JInvTableColumn fx:id="ICUSNUM" editable="false" fieldName="ICUSNUM" prefWidth="75.0" text="%icusnum" transientColumn="false" />
                   <JInvTableColumn fx:id="ICUSNAME" editable="false" fieldName="ICUSNAME" prefWidth="75.0" text="%icusname" transientColumn="false" />
                   <JInvTableColumn fx:id="DCUSBIRTHDAY" editable="false" fieldName="DCUSBIRTHDAY" prefWidth="75.0" text="%dcusbirthday" transientColumn="false" />
-                  <JInvTableColumn fx:id="ccusnumnal" editable="false" fieldName="CCUSNUMNAL" prefWidth="75.0" text="%ccusnumnal" transientColumn="false" />
+                  <JInvTableColumn fx:id="CCUSNUMNAL" editable="false" fieldName="CCUSNUMNAL" prefWidth="75.0" text="%ccusnumnal" transientColumn="false" />
                   <JInvTableColumn fx:id="CCUSSNILS" editable="false" fieldName="CCUSSNILS" prefWidth="75.0" text="%ccussnils" transientColumn="false" />
-                  <JInvTableColumn fx:id="ph_numnum" editable="false" fieldName="PH_NUMNUM" prefWidth="75.0" text="%ph_numnum" transientColumn="false" />
+                  <JInvTableColumn fx:id="PH_NUMNUM" editable="false" fieldName="PH_NUMNUM" prefWidth="75.0" text="%ph_numnum" transientColumn="false" />
                   <JInvTableColumn fx:id="E_MAIL" editable="false" fieldName="E_MAIL" prefWidth="75.0" text="%e_mail" transientColumn="false" />
                </columns>
             </JInvTableColumn>
-            <JInvTableColumn fx:id="Documrnts" editable="false" fieldName="Documents" prefWidth="75.0" text="Документы" transientColumn="false">
+            <JInvTableColumn fx:id="Documents" editable="false" fieldName="Documents" prefWidth="75.0" text="Документы" transientColumn="false">
                <columns>
                   <JInvTableColumn fx:id="ID_DOC" editable="false" fieldName="ID_DOC" prefWidth="75.0" text="%id_doc" transientColumn="false" />
                   <JInvTableColumn fx:id="DOC" editable="false" fieldName="DOC" prefWidth="75.0" text="%doc" transientColumn="false" />

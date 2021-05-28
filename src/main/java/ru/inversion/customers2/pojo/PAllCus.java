@@ -23,11 +23,15 @@ public class PAllCus extends IDMarkable implements Serializable {
     private static final Long serialVersionUID = 26_05_2021_14_14L;
 
     private Long ICUSNUM;
+    private String CCUSFLAG;
     private String CCUSNAME;
-    private LocalDate DCUSBIRTHDATE;
+    private String CCUSFIRST_NAME;
+    private String CCUSMIDDLE_NAME;
+    private String CCUSLAST_NAME;
+    private LocalDate DCUSBIRTHDAY;
     private String CCUSNUMNAL;
     private String CCUSSNILS;
-    private Long PHNUMNAL;
+    private Long PH_NUMNUM;
     private String E_MAIL;
     private Long ID_DOC;
     private Long ID_DOC_TP;
@@ -36,8 +40,10 @@ public class PAllCus extends IDMarkable implements Serializable {
     private String DOC;
     private LocalDate DOC_DATE;
     private String DOC_AGENCY;
+    private Long ADDR_TYPE;
     private String COUNTRY;
     private String POST_INDEX;
+    private String CITY;
     private String INFR_TYPE;
     private String INFR_NAME;
     private String DOM;
@@ -56,8 +62,8 @@ public class PAllCus extends IDMarkable implements Serializable {
         return CCUSNAME;
     }
 @Column(name = "DCUSBIRTHDATE")
-    public LocalDate getDCUSBIRTHDATE() {
-        return DCUSBIRTHDATE;
+    public LocalDate getDCUSBIRTHDAY() {
+        return DCUSBIRTHDAY;
     }
 @Column(name = "CCUSNUMNAL")
     public String getCCUSNUMNAL() {
@@ -67,9 +73,9 @@ public class PAllCus extends IDMarkable implements Serializable {
     public String getCCUSSNILS() {
         return CCUSSNILS;
     }
-@Column(name = "PHNUMNAL")
-    public Long getPHNUMNAL() {
-        return PHNUMNAL;
+@Column(name = "PH_NUMNUM")
+    public Long getPH_NUMNUM() {
+        return PH_NUMNUM;
     }
 @Column(name = "E_MAIL")
     public String getE_MAIL() {
@@ -150,9 +156,34 @@ public class PAllCus extends IDMarkable implements Serializable {
         return DOC_NUM;
     }
 
+    public String getCCUSFLAG() {
+        return CCUSFLAG;
+    }
+
+    public String getCCUSFIRST_NAME() {
+        return CCUSFIRST_NAME;
+    }
+
+    public String getCCUSMIDDLE_NAME() {
+        return CCUSMIDDLE_NAME;
+    }
+
+    public String getCCUSLAST_NAME() {
+        return CCUSLAST_NAME;
+    }
+
+    public Long getADDR_TYPE() {
+        return ADDR_TYPE;
+    }
+
+    public String getCITY() {
+        return CITY;
+    }
+
     public Long getACT() {
         return ACT;
     }
+
 //============================ Сеттеры
 
 
@@ -164,8 +195,8 @@ public class PAllCus extends IDMarkable implements Serializable {
         this.CCUSNAME = CCUSNAME;
     }
 
-    public void setDCUSBIRTHDATE(LocalDate DCUSBIRTHDATE) {
-        this.DCUSBIRTHDATE = DCUSBIRTHDATE;
+    public void setDCUSBIRTHDAY(LocalDate DCUSBIRTHDATE) {
+        this.DCUSBIRTHDAY = DCUSBIRTHDATE;
     }
 
     public void setCCUSNUMNAL(String CCUSNUMNAL) {
@@ -176,8 +207,8 @@ public class PAllCus extends IDMarkable implements Serializable {
         this.CCUSSNILS = CCUSSNILS;
     }
 
-    public void setPHNUMNAL(Long PHNUMNAL) {
-        this.PHNUMNAL = PHNUMNAL;
+    public void setPH_NUMNUM(Long PHNUMNAL) {
+        this.PH_NUMNUM = PHNUMNAL;
     }
 
     public void setE_MAIL(String e_MAIL) {
@@ -246,6 +277,30 @@ public class PAllCus extends IDMarkable implements Serializable {
 
     public void setDOC_NUM(String DOC_NUM) {
         this.DOC_NUM = DOC_NUM;
+    }
+
+    public void setCCUSFLAG(String CCUSFLAG) {
+        this.CCUSFLAG = CCUSFLAG;
+    }
+
+    public void setCCUSFIRST_NAME(String CCUSFIRST_NAME) {
+        this.CCUSFIRST_NAME = CCUSFIRST_NAME;
+    }
+
+    public void setCCUSMIDDLE_NAME(String CCUSMIDDLE_NAME) {
+        this.CCUSMIDDLE_NAME = CCUSMIDDLE_NAME;
+    }
+
+    public void setCCUSLAST_NAME(String CCUSLAST_NAME) {
+        this.CCUSLAST_NAME = CCUSLAST_NAME;
+    }
+
+    public void setADDR_TYPE(Long ADDR_TYPE) {
+        this.ADDR_TYPE = ADDR_TYPE;
+    }
+
+    public void setCITY(String CITY) {
+        this.CITY = CITY;
     }
 
     @Override

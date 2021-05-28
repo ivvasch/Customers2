@@ -1,6 +1,7 @@
 package ru.inversion.customers2.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import ru.inversion.customers2.pojo.PCusAddr;
 import ru.inversion.customers2.service.ServiceMap;
@@ -57,8 +58,14 @@ public class EditCusAddrController extends JInvFXBrowserController {
             cusadr.setKV(KV.getText());
             cusadr.setACT(getACT());
 
-            ServiceMap.servMap(cusadr, "ivv_cus_addr_ins", this);
-            this.close();
+            if (COUNTRY.getText().length() > 3) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("В поле Страна необходимо ввести не более 3х символов");
+                alert.showAndWait();
+            } else {
+                ServiceMap.servMap(cusadr, "ivv_cus_addr_ins", this);
+                this.close();
+            }
         });
 
         btnCancell.setOnAction(event -> {

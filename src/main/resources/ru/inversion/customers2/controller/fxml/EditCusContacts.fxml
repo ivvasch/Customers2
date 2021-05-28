@@ -76,16 +76,16 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </GridPane.margin>
                 </JInvTextField>
-                <JInvTextField fx:id="E_MAIL" fieldName="POST_INDEX" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <JInvTextField fx:id="E_MAIL" fieldName="E_MAIL" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </GridPane.margin>
                 </JInvTextField>
-                <JInvTextField fx:id="PH_NUMNUM" fieldName="CITY" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                    <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                    </GridPane.margin>
-                </JInvTextField>
+            <JInvLongField fx:id="PH_NUMNUM" editable="false" fieldName="PH_NUMNUM" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </JInvLongField>
             </children>
          <VBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" />
