@@ -42,11 +42,10 @@ public class PCusAddr extends IDMarkable implements Serializable {
         return ID_ADDR;
     }
 
-    //    @Column(name = "ADDR_TYPE")
-
     public Long getADDR_TYPE() {
         return ADDR_TYPE;
     }
+
     @Column(name = "ADDRTYPE")
     public String getADDRTYPE() {
         if (getADDR_TYPE() == 0)

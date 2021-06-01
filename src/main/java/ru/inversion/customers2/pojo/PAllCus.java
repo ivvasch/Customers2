@@ -31,7 +31,9 @@ public class PAllCus extends IDMarkable implements Serializable {
     private LocalDate DCUSBIRTHDAY;
     private String CCUSNUMNAL;
     private String CCUSSNILS;
+    private Long ID_PHONE;
     private Long PH_NUMNUM;
+    private Long ID_EMAIL;
     private String E_MAIL;
     private Long ID_DOC;
     private Long ID_DOC_TP;
@@ -40,6 +42,7 @@ public class PAllCus extends IDMarkable implements Serializable {
     private String DOC;
     private LocalDate DOC_DATE;
     private String DOC_AGENCY;
+    private Long ID_ADDR;
     private Long ADDR_TYPE;
     private String COUNTRY;
     private String POST_INDEX;
@@ -184,7 +187,18 @@ public class PAllCus extends IDMarkable implements Serializable {
         return ACT;
     }
 
-//============================ Сеттеры
+    public Long getID_PHONE() {
+        return ID_PHONE;
+    }
+
+    public Long getID_EMAIL() {
+        return ID_EMAIL;
+    }
+
+    public Long getID_ADDR() {
+        return ID_ADDR;
+    }
+    //============================ Сеттеры
 
 
     public void setICUSNUM(Long ICUSNUM) {
@@ -301,6 +315,18 @@ public class PAllCus extends IDMarkable implements Serializable {
 
     public void setCITY(String CITY) {
         this.CITY = CITY;
+    }
+
+    public void setID_PHONE(Long ID_PHONE) {
+        this.ID_PHONE = ID_PHONE;
+    }
+
+    public void setID_EMAIL(Long ID_EMAIL) {
+        this.ID_EMAIL = ID_EMAIL;
+    }
+
+    public void setID_ADDR(Long ID_ADDR) {
+        this.ID_ADDR = ID_ADDR;
     }
 
     @Override

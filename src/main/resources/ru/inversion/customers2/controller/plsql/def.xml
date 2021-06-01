@@ -99,12 +99,12 @@
     <expression name="ivv_cus_contacts_ins" lang="PL/SQL">
         <script><![CDATA[
         BEGIN
-          IVV_CUS_PACKAGE.ivv_cus_contacts_ins(ivv_icusnum      =>   :ICUSNUM,
+          IVV_CUS_PACKAGE.ivv_cus_contacts_ins(ivv_icusnum      =>    :ICUSNUM,
                                           ivv_id_email          =>    :ID_EMAIL,
                                           ivv_id_phone          =>    :ID_PHONE,
+                                          ivv_country           =>    :COUNTRY,
                                           ivv_email             =>    :E_MAIL,
                                           ivv_ph_numnum         =>    :PH_NUMNUM,
-                                          ivv_country           =>    :COUNTRY,
                                           ivv_act               =>    :ACT,
                                           ivv_err               =>    :ERR,
                                           ivv_res               =>    :RES);
@@ -113,10 +113,10 @@
         <parameters>
             <parameter name="icusnum"     mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
             <parameter name="id_email"    mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
-            <parameter name="e_mail"      mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
             <parameter name="id_phone"    mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
-            <parameter name="ph_numnum"   mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
             <parameter name="country"     mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
+            <parameter name="e_mail"      mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
+            <parameter name="ph_numnum"   mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
             <parameter name="act"         mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
             <parameter name="err"         mode="OUT" sqlType="VARCHAR"    javaType="String"       defaultValue=""/>
             <parameter name="res"         mode="OUT" sqlType="BIGINT"     javaType="Long"         defaultValue=""/>
@@ -133,8 +133,11 @@
                                         ivv_dcusbirthday      =>    :DCUSBIRTHDAY,
                                         ivv_ccusnumnal        =>    :CCUSNUMNAL,
                                         ivv_ccussnils         =>    :CCUSSNILS,
+                                        ivv_id_phone          =>    :ID_PHONE,
                                         ivv_ph_numnum         =>    :PH_NUMNUM,
+                                        ivv_id_email          =>    :ID_EMAIL,
                                         ivv_email             =>    :E_MAIL,
+                                        ivv_id_doc            =>    :ID_DOC,
                                         ivv_id_doc_tp         =>    :ID_DOC_TP,
                                         ivv_doc_ser           =>    :DOC_SER,
                                         ivv_doc_num           =>    :DOC_NUM,
@@ -163,14 +166,16 @@
             <parameter name="dcusbirthday"      mode="IN" sqlType="DATE"        javaType="LocalDate"    defaultValue=""/>
             <parameter name="ccusnumnal"        mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
             <parameter name="ccussnils"         mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
+            <parameter name="id_phone"          mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
             <parameter name="ph_numnum"         mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
+            <parameter name="id_email"          mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
             <parameter name="e_mail"            mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
             <parameter name="id_doc_tp"         mode="IN" sqlType="BIGINT"      javaType="Combobox"     defaultValue=""/>
             <parameter name="doc_ser"           mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
             <parameter name="doc_num"           mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
             <parameter name="doc_date"          mode="IN" sqlType="DATE"        javaType="LocalDate"    defaultValue=""/>
             <parameter name="doc_agency"        mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
-<!--            <parameter name="id_addr"     mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>-->
+            <parameter name ="id_addr"          mode="IN" sqlType="BIGINT"      javaType="Long"         defaultValue=""/>
             <parameter name="addr_type"         mode="IN" sqlType="BIGINT"      javaType="Combobox"     defaultValue=""/>
             <parameter name="country"           mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
             <parameter name="post_index"        mode="IN" sqlType="VARCHAR"     javaType="String"       defaultValue=""/>
