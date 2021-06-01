@@ -62,6 +62,7 @@ public class CusDocumController extends JInvFXBrowserController {
         switch (mode) {
             case VM_INS:
                 customers = new PCusDocum();
+                customers.setICUSNUM(dsPcusDoc.getCurrentRow().getICUSNUM());
                 break;
             case VM_NONE:
                 if (dsPcusDoc.getCurrentRow() == null)
@@ -87,26 +88,12 @@ public class CusDocumController extends JInvFXBrowserController {
                     .initProperties(getInitProperties())
                     .callback(this::doFormResult)
                     .doModal();
+
         }
     }
 
     private void doFormResult(FormReturnEnum ok, JInvFXFormController dctl) {
-        if (FormReturnEnum.RET_OK == ok) {
-            switch (dctl.getFormMode()) {
-                case VM_INS:
-                    dsPcusDoc.insertRow((PCusDocum) dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
-                    break;
-                case VM_EDIT:
-                    dsPcusDoc.updateCurrentRow((PCusDocum) dctl.getDataObject());
-                    break;
-                case VM_DEL:
-                    dsPcusDoc.removeCurrentRow();
-                    break;
-                default:
-                    break;
-            }
-        }
-        cus_doc.requestFocus();
+     doRefresh();
     }
 
     private void doRefresh() {

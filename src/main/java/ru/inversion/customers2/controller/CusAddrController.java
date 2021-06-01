@@ -65,6 +65,7 @@ public class CusAddrController extends JInvFXBrowserController {
         switch (mode) {
             case VM_INS:
                 cus_addr = new PCusAddr();
+                cus_addr.setICUSNUM(dsPcusAddr.getCurrentRow().getICUSNUM());
                 break;
             case VM_NONE:
                 if (dsPcusAddr.getCurrentRow() == null)
@@ -91,22 +92,7 @@ public class CusAddrController extends JInvFXBrowserController {
     }
 
     private void doFormResult(FormReturnEnum ok, JInvFXFormController dctl) {
-        if (FormReturnEnum.RET_OK == ok) {
-            switch (dctl.getFormMode()) {
-                case VM_INS:
-                    dsPcusAddr.insertRow((PCusAddr) dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
-                    break;
-                case VM_EDIT:
-                    dsPcusAddr.updateCurrentRow((PCusAddr) dctl.getDataObject());
-                    break;
-                case VM_DEL:
-                    dsPcusAddr.removeCurrentRow();
-                    break;
-                default:
-                    break;
-            }
-        }
-        cus_addr.requestFocus();
+       doRefresh();
     }
 
     private void doRefresh() {

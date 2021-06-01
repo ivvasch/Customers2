@@ -52,8 +52,8 @@ public class CustomersController extends JInvFXBrowserController {
          * чтобы все датасеты подгрузились перед основной таблицей!
          */
         allCusTabPageController.init(dataSet);
-        cusContactsTabPageController.init(dataSet);
         cusAddrTabPageController.init(dataSet);
+        cusContactsTabPageController.init(dataSet);
         cusDocumTabPageController.init(dataSet);
         cusTabPageController.init(dataSet);
 

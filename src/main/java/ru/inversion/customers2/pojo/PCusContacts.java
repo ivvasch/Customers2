@@ -7,9 +7,12 @@ import java.io.Serializable;
 
 @Entity(name = "ru.inversion.customers2.pojo.PCusContacts")
 @Table(name = "cuscontacts")
-@NamedNativeQuery(name = "ru.inversion.customers2.pojo.PCusContacts", query = "SELECT email.icusnum, email.id_email, email.e_mail, phone.id_phone, phone.ph_numnum, phone.country\n" +
-        "    FROM (SELECT icusnum, id_email, e_mail FROM XXI.CUS_EMAIL)email INNER JOIN (SELECT icusnum, id_phone, ph_numnum, country FROM XXI.CUS_PHONE)phone\n" +
-        "        ON email.ICUSNUM = phone.ICUSNUM")
+//@NamedNativeQuery(name = "ru.inversion.customers2.pojo.PCusContacts", query = "SELECT email.icusnum, email.id_email, email.e_mail, phone.id_phone, phone.ph_numnum, phone.country\n" +
+//        "    FROM (SELECT icusnum, id_email, e_mail FROM XXI.CUS_EMAIL)email INNER JOIN (SELECT icusnum, id_phone, ph_numnum, country FROM XXI.CUS_PHONE)phone\n" +
+//        "        ON email.ICUSNUM = phone.ICUSNUM")
+@NamedNativeQuery(name = "ru.inversion.customers2.pojo.PCusContacts", query = "SELECT icusnum, id_email, e_mail, id_phone, ph_numnum, country FROM (SELECT cus.icusnum, id_email, e_mail, id_phone, ph_numnum, country FROM cus INNER JOIN (\n" +
+        "SELECT email.icusnum, email.id_email, email.e_mail, phone.id_phone, phone.ph_numnum, phone.country FROM (SELECT icusnum, id_email, e_mail FROM XXI.CUS_EMAIL)email\n" +
+        "    INNER JOIN (SELECT icusnum, id_phone, ph_numnum, country FROM XXI.CUS_PHONE)phone ON email.ICUSNUM = phone.ICUSNUM)contacts ON contacts.ICUSNUM = cus.ICUSNUM)")
 public class PCusContacts extends IDMarkable implements Serializable {
 
     private static final Long serialVersionUID = 25_05_2021_17_06L;
@@ -28,6 +31,7 @@ public class PCusContacts extends IDMarkable implements Serializable {
     @Id
     @Column(name = "ICUSNUM")
     public Long getICUSNUM() {
+
         return ICUSNUM;
     }
 

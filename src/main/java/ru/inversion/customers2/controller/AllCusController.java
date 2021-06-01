@@ -60,6 +60,8 @@ public class AllCusController extends JInvFXBrowserController {
         switch (mode) {
             case VM_INS:
                 customers = new PAllCus();
+                customers.setICUSNUM(dsPAllCus.getCurrentRow().getICUSNUM());
+
                 break;
             case VM_NONE:
                 if (dsPAllCus.getCurrentRow() == null)
@@ -83,29 +85,14 @@ public class AllCusController extends JInvFXBrowserController {
                     .dataObject(customers)
                     .dialogMode(mode)
                     .initProperties(getInitProperties())
-//                    .callback(this::doFormResult)
+                    .callback(this::doFormResult)
                     .doModal();
 
         }
     }
 
-    private void doFormResult(FormReturnEnum ok, JInvFXFormController<PAllCus> dctl) {
-        if (FormReturnEnum.RET_OK == ok) {
-            switch (dctl.getFormMode()) {
-                case VM_INS:
-                    dsPAllCus.insertRow(dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
-                    break;
-                case VM_EDIT:
-                    dsPAllCus.updateCurrentRow(dctl.getDataObject());
-                    break;
-                case VM_DEL:
-                    dsPAllCus.removeCurrentRow();
-                    break;
-                default:
-                    break;
-            }
-        }
-        allcus.requestFocus();
+    private void doFormResult(FormReturnEnum ok, JInvFXFormController dctl) {
+        doRefresh();
     }
 
     private void doRefresh() {

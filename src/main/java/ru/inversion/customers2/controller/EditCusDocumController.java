@@ -14,6 +14,7 @@ import ru.inversion.fx.form.controls.JInvTextField;
 public class EditCusDocumController extends JInvFXBrowserController {
 
     @FXML private JInvLongField ICUSNUM;
+    @FXML private JInvLongField ID_DOC;
     @FXML private ComboBox ID_DOC_TP;
     @FXML private JInvTextField DOC_SER;
     @FXML private JInvTextField DOC_NUM;
@@ -21,7 +22,6 @@ public class EditCusDocumController extends JInvFXBrowserController {
     @FXML private JInvTextField DOC_AGENCY;
     @FXML private JInvButton btnOk;
     @FXML private JInvButton btnCancell;
-    private  Long ID_DOC;
     private  Long ACT;
     private PCusDocum cusdoc;
 
@@ -32,10 +32,10 @@ public class EditCusDocumController extends JInvFXBrowserController {
         btnOk.setOnAction((event) -> {
             switch (getFormMode()) {
                 case VM_INS:
-                    setACT(1L);
+                    setACT(2L);
                     break;
                 case VM_NONE:
-                    setACT(1L);
+                    setACT(2L);
                     break;
                 case VM_EDIT:
                     setACT(2L);
@@ -45,6 +45,7 @@ public class EditCusDocumController extends JInvFXBrowserController {
                     break;
             }
             cusdoc.setICUSNUM(ICUSNUM.getValue() == null ? 0 : ICUSNUM.getValue());
+            cusdoc.setID_DOC(ID_DOC.getValue());
             cusdoc.setID_DOC_TP(Long.valueOf(ID_DOC_TP.getValue().toString().substring(0, 2)));
             cusdoc.setDOC_SER(DOC_SER.getText());
             cusdoc.setDOC_NUM(DOC_NUM.getText());

@@ -62,6 +62,7 @@ public class CusContactsController extends JInvFXBrowserController {
         switch (mode) {
             case VM_INS:
                 customers = new PCusContacts();
+                customers.setICUSNUM(dataSet.getDsPcus().getCurrentRow().getICUSNUM());
                 break;
             case VM_NONE:
                 if (dsPcusContacts.getCurrentRow() == null)
@@ -85,29 +86,14 @@ public class CusContactsController extends JInvFXBrowserController {
                     .dataObject(customers)
                     .dialogMode(mode)
                     .initProperties(getInitProperties())
-//                    .callback(this::doFormResult)
+                    .callback(this::doFormResult)
                     .doModal();
 
         }
     }
 
-    private void doFormResult(FormReturnEnum ok, JInvFXFormController<PCusContacts> dctl) {
-        if (FormReturnEnum.RET_OK == ok) {
-            switch (dctl.getFormMode()) {
-                case VM_INS:
-                    dsPcusContacts.insertRow(dctl.getDataObject(), IDataSet.InsertRowModeEnum.AFTER_CURRENT, true);
-                    break;
-                case VM_EDIT:
-                    dsPcusContacts.updateCurrentRow(dctl.getDataObject());
-                    break;
-                case VM_DEL:
-                    dsPcusContacts.removeCurrentRow();
-                    break;
-                default:
-                    break;
-            }
-        }
-        cuscontacts.requestFocus();
+    private void doFormResult(FormReturnEnum ok, JInvFXFormController dctl) {
+        doRefresh();
     }
 
     private void doRefresh() {

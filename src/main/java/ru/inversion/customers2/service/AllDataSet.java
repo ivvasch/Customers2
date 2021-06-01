@@ -16,11 +16,6 @@ public class AllDataSet {
     private CusContactsController cuscontactsController;
     private AllCusController allCusController;
 
-//    public void init() {
-//        DataLinkBuilder.linkDataSet(getDsPcus(), getDsPcusDoc(), PCustomers::getICUSNUM, "ICUSNUM");
-//        DataLinkBuilder.linkDataSet(getDsPcus(), getDsPcusAddr(), PCustomers::getICUSNUM, "ICUSNUM");
-//    }
-
     public void setCusController(CusController cusController) {
         this.cusController = cusController;
         dsPcus.setTaskContext(getCusController().getTaskContext());

@@ -13,6 +13,7 @@ import ru.inversion.fx.form.controls.JInvTextField;
 public class EditCusAddrController extends JInvFXBrowserController {
 
     @FXML private JInvLongField ICUSNUM;
+    @FXML private JInvLongField ID_ADDR;
     @FXML private ComboBox ADDR_TYPE;
     @FXML private JInvTextField COUNTRY;
     @FXML private JInvTextField POST_INDEX;
@@ -34,10 +35,10 @@ public class EditCusAddrController extends JInvFXBrowserController {
         btnOk.setOnAction((event) -> {
             switch (getFormMode()) {
                 case VM_INS:
-                    setACT(1L);
+                    setACT(2L);
                     break;
                 case VM_NONE:
-                    setACT(1L);
+                    setACT(2L);
                     break;
                 case VM_EDIT:
                     setACT(2L);
@@ -47,6 +48,7 @@ public class EditCusAddrController extends JInvFXBrowserController {
                     break;
             }
             cusadr.setICUSNUM(ICUSNUM.getValue() == null ? 0 : ICUSNUM.getValue());
+            cusadr.setID_ADDR(ID_ADDR.getValue());
             cusadr.setADDR_TYPE(Long.valueOf(ADDR_TYPE.getValue().toString().substring(0, 1)));
             cusadr.setCOUNTRY(COUNTRY.getText());
             cusadr.setPOST_INDEX(POST_INDEX.getText());
